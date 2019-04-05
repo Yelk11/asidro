@@ -1,2 +1,6 @@
-# test
-This is a test
+# READ ME
+
+
+
+#Asidro
+this is a fun game
