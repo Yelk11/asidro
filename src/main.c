@@ -1,4 +1,20 @@
-int main() {
+#include <ncurses.h>
 
-    return 0;
+#include "game.h"
+
+
+
+int main()
+{
+	
+
+	initscr();
+	raw();
+	
+	noecho();
+
+    game();
+
+	endwin();
+	return 0;
 }

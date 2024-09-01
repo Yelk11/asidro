@@ -6,6 +6,7 @@ EXE := main
 SRC := $(wildcard $(SRC_DIR)/*.c)
 OBJ := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
+LDFLAGS  := -lncurses
 CPPFLAGS := -Iinclude -MMD -MP
 CFLAGS   := -Wall -g
 
@@ -15,7 +16,7 @@ CFLAGS   := -Wall -g
 all: $(EXE)
 
 $(EXE): $(OBJ)
-	$(CC) $^ -o $@
+	$(CC) $^ -o $@ $(LDFLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
