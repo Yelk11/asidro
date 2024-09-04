@@ -16,7 +16,7 @@ typedef struct map_t{
 
 map_t* genMap(void);
 void freeMap(map_t* map);
-void updateMap(map_t* map);
+map_t* updateMap(map_t* map);
 void add_entity_map(entity_t* entity);
 
 

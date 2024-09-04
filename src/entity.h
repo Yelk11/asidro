@@ -8,13 +8,20 @@ typedef struct position_t{
 }position_t;
 
 typedef struct entity_t{
-    position_t pos;
+    struct position_t* pos;
     char ascii_char;
 }entity_t;
 
+typedef enum {
+    UP,
+    DOWN,
+    RIGHT,
+    LEFT
+}direction;
+
 
 entity_t* createEntity(position_t pos, char charector);
-void moveEntity(entity_t* e, char dir);
+void moveEntity(entity_t* e, direction dir);
 
 
 

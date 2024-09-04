@@ -2,7 +2,7 @@
 #include "map.h"
 #include "entity.h"
 #include "game.h"
-
+#include "screen.h"
 
 
 void initializeGame(game_t* game)
@@ -17,12 +17,13 @@ void updateGame(game_t* game)
     start_pos.x = 5;
     start_pos.y = 5;
     entity_t* player = createEntity(start_pos, '@');
-
+    nodelay(stdscr, true);
     while(getch() != 'q'){
         ch = getch();
         moveEntity(player, ch);
         updateMap(game->map);
-        refresh();
+        update_screen(game->map);
+        
 	}
     
 }
