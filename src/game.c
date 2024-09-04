@@ -13,9 +13,8 @@ void initializeGame(game_t* game)
 void updateGame(game_t* game)
 {
     int ch;
-    position_t start_pos;
-    start_pos.x = 5;
-    start_pos.y = 5;
+    position_t* start_pos = create_position(5,5);
+
     entity_t* player = createEntity(start_pos, '@');
     nodelay(stdscr, true);
     while(getch() != 'q'){

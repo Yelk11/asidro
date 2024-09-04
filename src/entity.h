@@ -19,8 +19,8 @@ typedef enum {
     LEFT
 }direction;
 
-
-entity_t* createEntity(position_t pos, char charector);
+position_t* create_position(int x, int y);
+entity_t* createEntity(position_t* pos, char charector);
 void moveEntity(entity_t* e, direction dir);
 
 
