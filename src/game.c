@@ -1,49 +1,43 @@
 #include <ncurses.h>
 #include "map.h"
 #include "entity.h"
+#include "game.h"
 
 
 
-
-void initializeGame()
+void initializeGame(game_t* game)
 {
-    genMap();
+    game->map = genMap();
 }
 
-void updateGame()
+void updateGame(game_t* game)
 {
     int ch;
-    position start_pos;
+    position_t start_pos;
     start_pos.x = 5;
     start_pos.y = 5;
-    entity* player = createEntity(start_pos, '@');
+    entity_t* player = createEntity(start_pos, '@');
 
     while(getch() != 'q'){
         ch = getch();
         moveEntity(player, ch);
-        updateMap();
+        updateMap(game->map);
         refresh();
 	}
     
 }
 
-void drawGame()
+void freeGame(game_t* game)
 {
-
+    freeMap(game->map);
 }
 
 
-
-void freeGame()
+void game(void)
 {
-    freeMap();
-}
-
-
-void game()
-{
-    initializeGame();
-    updateGame();
-    freeGame();
+    game_t* game = calloc(1, sizeof(game_t));
+    initializeGame(game);
+    updateGame(game);
+    freeGame(game);
 }
 

@@ -2,19 +2,19 @@
 #define ENTITY_H
 
 
-typedef struct position{
+typedef struct position_t{
     int x;
     int y;
-}position;
+}position_t;
 
-typedef struct entity{
-    position pos;
+typedef struct entity_t{
+    position_t pos;
     char ascii_char;
-}entity;
+}entity_t;
 
 
-entity* createEntity(position pos, char charector);
-void moveEntity(entity* e, char dir);
+entity_t* createEntity(position_t pos, char charector);
+void moveEntity(entity_t* e, char dir);
 
 
 

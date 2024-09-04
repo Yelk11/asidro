@@ -3,9 +3,9 @@
 #include "entity.h"
 
 
-entity* createEntity(position start_pos, char charector)
+entity_t* createEntity(position_t start_pos, char charector)
 {
-  entity* newPlayer = calloc(1, sizeof(entity));
+  entity_t* newPlayer = calloc(1, sizeof(entity_t));
 
   newPlayer->pos.y = start_pos.y;
   newPlayer->pos.x = start_pos.x;
@@ -15,7 +15,7 @@ entity* createEntity(position start_pos, char charector)
 }
 
 
-void moveEntity(entity* e, char dir)
+void moveEntity(entity_t* e, char dir)
 {
     switch(dir)
     {

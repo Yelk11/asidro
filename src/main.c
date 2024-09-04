@@ -13,7 +13,7 @@ int main()
 	
 	noecho();
 
-    game();
+  	game();
 
 	endwin();
 	return 0;

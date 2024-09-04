@@ -9,9 +9,10 @@
 #define MOUNTAIN  '^'
 #define PLAYER    '*'
 
-void genMap(void)
+map_t* genMap(void)
 {
     int y, x;
+    map_t* map = calloc(1, sizeof(map_t));
 
     /* draw the quest map */
 
@@ -34,14 +35,20 @@ void genMap(void)
     for (y = 1; y < LINES / 2; y++) {
         mvhline(y, 1, WATER, COLS / 3);
     }
+    return map;
 }
 
-void updateMap(void)
+void updateMap(map_t* map)
+{
+    
+}
+
+void freeMap(map_t* map)
 {
 
 }
 
-void freeMap(void)
+void add_entity_map(entity_t* entity)
 {
-
+    
 }

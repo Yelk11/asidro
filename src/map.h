@@ -1,17 +1,24 @@
+#ifndef MAP_H
+#define MAP_H
+
+#include "utils/linked_list.h"
+#include "entity.h"
 
 #define MAP_HEIGHT 500
 #define MAP_WIDTH 500
 
-typedef struct map{
+typedef struct map_t{
     char map[MAP_HEIGHT][MAP_WIDTH];
-}map;
+    int pos_x, pos_y; // location of player
+    struct list_t* entity_list;
+}map_t;
 
 
-void updateMap(void);
-void genMap(void);
-void freeMap(void);
+map_t* genMap(void);
+void freeMap(map_t* map);
+void updateMap(map_t* map);
+void add_entity_map(entity_t* entity);
 
 
 
-
-
+#endif
