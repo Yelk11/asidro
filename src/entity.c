@@ -13,7 +13,7 @@ entity_t* createEntity(position_t* start_pos, char charector)
 {
     entity_t* newPlayer = calloc(1, sizeof(entity_t));
     newPlayer->pos = start_pos;
-    newPlayer->ascii_char = '@';
+    newPlayer->ascii_char = charector;
 
     return newPlayer;
 }
