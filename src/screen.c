@@ -3,7 +3,7 @@
 
 
 
-void update_screen(map_t* map)
+void update_screen(game_t* game)
 {
     int my, mx;
     getmaxyx(stdscr, my, mx);
@@ -11,14 +11,15 @@ void update_screen(map_t* map)
     {
         for(int y = 0; y < my; y++)
         {
-            if(map->map[y][x])
+            if(game->map->map[y][x])
             {
-                mvaddch(y,x,map->map[y][x]);
+                mvaddch(y,x,game->map->map[y][x]);
             }else{
                 mvaddch(y,x,'X');
             }
         }
     }
+    
     refresh();
 }
 

@@ -11,7 +11,7 @@ void initializeGame(game_t* game)
 {
     game->map = genMap();
     position_t* start_pos = create_position(5,5);
-    game->map->player = createEntity(start_pos, '@');
+    game->player = createEntity(start_pos, '@');
     
 }
 
@@ -24,9 +24,8 @@ void updateGame(game_t* game)
     
     do{
         ch = getch();
-        moveEntity(game->map->player, ch);
-        updateMap(game->map);
-        update_screen(game->map);
+        moveEntity(game->player, ch);
+        update_screen(game);
 	}while(ch != 'q');
     
 }

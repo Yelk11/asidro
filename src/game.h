@@ -6,6 +6,7 @@
 
 typedef struct game_t{
     struct map_t* map;
+    struct entity_t* player;
 }game_t;
 
 void initializeGame(game_t* game);
