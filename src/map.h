@@ -10,13 +10,13 @@
 typedef struct map_t{
     char map[MAP_HEIGHT][MAP_WIDTH];
     int pos_x, pos_y; // location of player
-    struct list_node* entity_list;
+    struct entity_t* player;
 }map_t;
 
 
 map_t* genMap(void);
 void freeMap(map_t* map);
-map_t* updateMap(map_t* map);
+void updateMap(map_t* map);
 void add_entity_map(entity_t* entity);
 
 

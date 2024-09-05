@@ -18,29 +18,21 @@ entity_t *createEntity(position_t *start_pos, char charector)
     return newPlayer;
 }
 
-void moveEntity(entity_t *e, direction dir)
+void moveEntity(entity_t *e, char dir)
 {
     switch (dir)
     {
-    case UP:
-        mvaddch(e->pos->y, e->pos->x, ' ');
+    case 'w':
         e->pos->y--;
-        mvaddch(e->pos->y, e->pos->x, e->ascii_char);
         break;
     case 'a':
-        mvaddch(e->pos->y, e->pos->x, ' ');
         e->pos->x--;
-        mvaddch(e->pos->y, e->pos->x, e->ascii_char);
         break;
     case 's':
-        mvaddch(e->pos->y, e->pos->x,' ');
         e->pos->y++;
-        mvaddch(e->pos->y, e->pos->x,e->ascii_char);
         break;
     case 'd':
-        mvaddch(e->pos->y, e->pos->x,' ');
         e->pos->x++;
-        mvaddch(e->pos->y, e->pos->x,e->ascii_char);
         break;
     default:
         break;

@@ -21,7 +21,7 @@ typedef enum {
 
 position_t* create_position(int x, int y);
 entity_t* createEntity(position_t* pos, char charector);
-void moveEntity(entity_t* e, direction dir);
+void moveEntity(entity_t* e, char dir);
 
 
 

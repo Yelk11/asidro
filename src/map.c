@@ -20,17 +20,11 @@ map_t* genMap(void)
     return map;
 }
 
-map_t* updateMap(map_t* map)
+void updateMap(map_t* map)
 {
-    map_t* new_map = calloc(1, sizeof(map_t));
-    list_node* curr_node = map->entity_list;
-    while(curr_node != NULL)
-    {
-        entity_t* e = (entity_t*) curr_node->data;
-        new_map->map[e->pos->x][e->pos->y] = e->ascii_char;
-        curr_node = curr_node->next;
-    }
-    return new_map;
+    map->map[map->player->pos->y][map->player->pos->x] = map->player->ascii_char;
+    
+    return ;
 }
 
 
@@ -40,7 +34,3 @@ void freeMap(map_t* map)
 
 }
 
-void add_entity_map(entity_t* entity)
-{
-    
-}

@@ -35,3 +35,6 @@ PLAYER
 
 
 
+Add all entities
+move entities
+print entities
