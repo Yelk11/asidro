@@ -10,26 +10,28 @@
 void initializeGame(game_t* game)
 {
     game->map = genMap();
+    position_t* start_pos = create_position(5,5);
+    entity_t* player = createEntity(start_pos, '@');
+    add_entity_map(player);
 }
 
 void updateGame(game_t* game)
 {
     int ch;
-    position_t* start_pos = create_position(5,5);
-
-    entity_t* player = createEntity(start_pos, '@');
-    list_node* entity_list = list_create(player);
-    game->map->entity_list = entity_list;
+    int pX = 5;
+    int pY = 5;
+    curs_set(0);
     nodelay(stdscr, true);
-    while(getch() != 'q'){
+    updateMap(game->map);
+    update_screen(game->map);
+    do{
         ch = getch();
-        moveEntity(player, ch);
-        updateMap(game->map);
-        update_screen(game->map);
         
-	}
+        
+	}while(ch != 'q');
     
 }
+
 
 void freeGame(game_t* game)
 {

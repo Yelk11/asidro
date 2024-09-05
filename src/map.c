@@ -33,6 +33,8 @@ map_t* updateMap(map_t* map)
     return new_map;
 }
 
+
+
 void freeMap(map_t* map)
 {
 
