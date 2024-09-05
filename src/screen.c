@@ -19,7 +19,7 @@ void update_screen(game_t* game)
             }
         }
     }
-    
+    mvaddch(game->player->pos->y, game->player->pos->x, game->player->ascii_char);
     refresh();
 }
 
