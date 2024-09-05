@@ -1,7 +1,7 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include "utils/linked_list.h"
+#include "linked_list.h"
 #include "entity.h"
 
 #define MAP_HEIGHT 500
@@ -10,7 +10,7 @@
 typedef struct map_t{
     char map[MAP_HEIGHT][MAP_WIDTH];
     int pos_x, pos_y; // location of player
-    struct list_t* entity_list;
+    struct list_node* entity_list;
 }map_t;
 
 

@@ -1,6 +1,7 @@
+#include <stdlib.h>
 
 #include "map.h"
-#include "utils/linked_list.h"
+#include "linked_list.h"
 
 
 
@@ -21,11 +22,11 @@ map_t* genMap(void)
 
 map_t* updateMap(map_t* map)
 {
-    map_t* new_map = NULL;
-    list_t* curr_node = map->entity_list;
+    map_t* new_map = calloc(1, sizeof(map_t));
+    list_node* curr_node = map->entity_list;
     while(curr_node != NULL)
     {
-        entity_t* e = (entity_t*) curr_node->value;
+        entity_t* e = (entity_t*) curr_node->data;
         new_map->map[e->pos->x][e->pos->y] = e->ascii_char;
         curr_node = curr_node->next;
     }

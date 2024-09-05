@@ -1,9 +1,11 @@
 #include <ncurses.h>
+#include <stdlib.h>
+
 #include "map.h"
 #include "entity.h"
 #include "game.h"
 #include "screen.h"
-
+#include "linked_list.h"
 
 void initializeGame(game_t* game)
 {
@@ -16,6 +18,8 @@ void updateGame(game_t* game)
     position_t* start_pos = create_position(5,5);
 
     entity_t* player = createEntity(start_pos, '@');
+    list_node* entity_list = list_create(player);
+    game->map->entity_list = entity_list;
     nodelay(stdscr, true);
     while(getch() != 'q'){
         ch = getch();
