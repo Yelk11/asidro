@@ -3,7 +3,7 @@ OBJ_DIR := obj
 
 
 EXE := main
-SRC := $(wildcard $(SRC_DIR)/*.c)
+SRC := $(shell find $(SRC_DIR) -name '*.c')
 OBJ := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 LDFLAGS  := -lncurses
@@ -18,13 +18,11 @@ all: $(EXE)
 $(EXE): $(OBJ)
 	$(CC) $^ -o $@ $(LDFLAGS)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(@D)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR):
-	mkdir -p $@
-
 clean:
-	@$(RM) -rv $(BIN_DIR) $(OBJ_DIR)
+	@$(RM) -rv $(OBJ_DIR)
 
 -include $(OBJ:.o=.d)
