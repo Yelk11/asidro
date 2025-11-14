@@ -20,7 +20,7 @@ entity_t* createEntity(position_t* pos, char character)
 	return e;
 }
 
-void moveEntity(entity_t* e, char dir)
+void movePlayer(entity_t* e, char dir)
 {
 	if (!e || !e->pos) return;
 	switch (dir) {

@@ -24,7 +24,7 @@ void updateGame(game_t* game)
     
     do{
         ch = getch();
-        moveEntity(game->player, ch);
+        movePlayer(game->player, ch);
         update_screen(game);
 	}while(ch != 'q');
     

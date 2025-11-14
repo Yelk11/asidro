@@ -7,7 +7,6 @@ SRC := $(shell find $(SRC_DIR) -name '*.c')
 OBJ := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 LDFLAGS  := -lncurses
-CPPFLAGS := -Iinclude -MMD -MP
 CFLAGS   := -Wall -g -Iinclude
 
 
