@@ -9,7 +9,7 @@
 
 void initializeGame(game_t* game)
 {
-    game->map = map_create();
+    game->map = map_init();
     position_t* start_pos = create_position(5,5);
     game->player = createEntity(start_pos, '@');
     

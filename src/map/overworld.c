@@ -103,9 +103,4 @@ void generate_overworld(map_t *map, int seed) {
     }
 }
 
-map_t *map_create_overworld(int seed) {
-    map_t *map = calloc(1, sizeof(map_t));
-    if (!map) return NULL;
-    generate_overworld(map, seed);
-    return map;
-}
+

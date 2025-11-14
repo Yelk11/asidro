@@ -5,19 +5,43 @@
 #include "map.h"
 
 #include <time.h>
+#include "overworld.h"
+#include "underworld.h"
 
 /* Minimal map implementation used by the game runtime. Previously there were
  * multiple map implementations during experimentation; provide a simple
  * implementation that delegates to the overworld generator by default.
  */
 
-map_t *map_create(void)
+map_t *map_init(void)
 {
-    /* default: create an overworld with a time-based seed */
-    extern map_t *map_create_overworld(int seed);
-    int seed = (int)time(NULL);
-    return map_create_overworld(seed);
+    return map_gen(0, 1);
 }
+
+map_t* map_gen(int level, int seed)
+{
+    map_t *map = calloc(1, sizeof(map_t));
+    if (!map) return NULL;
+    if(level == 0)
+    {
+        generate_overworld(map, seed);
+    }else{
+        generate_underworld(map, level, seed);
+    }
+    return map;
+}
+
+map_t* ascend(map_t* map)
+{
+
+}
+
+map_t* descend(map_t* map)
+{
+
+}
+
+
 
 void freeMap(map_t *map)
 {

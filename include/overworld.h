@@ -10,6 +10,5 @@
  *  - 'o' rock
  */
 void generate_overworld(map_t *map, int seed);
-map_t *map_create_overworld(int seed);
 
 #endif

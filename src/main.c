@@ -21,7 +21,7 @@ int main(int argc, char **argv)
             if (ws.ws_row > 0) term_h = ws.ws_row;
         }
 
-        map_t *map = map_create();
+        map_t *map = map_init();
 
         int view_w = term_w;
         int view_h = term_h;
