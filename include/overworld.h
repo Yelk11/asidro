@@ -9,6 +9,6 @@
  *  - 'T' tree
  *  - 'o' rock
  */
-void generate_overworld(map_t *map, int seed);
+void generate_overworld(map_t *map);
 
 #endif

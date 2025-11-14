@@ -6,7 +6,7 @@
 #define GAME_H
 
 #include "map.h"
-#include "entity.h"
+#include "actor.h"
 #include "sched.h"
 
 typedef struct game_t {

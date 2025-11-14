@@ -68,7 +68,7 @@ static double perlin_fbm(double x, double y, int seed, int octaves, double persi
     return sum / max;
 }
 
-void generate_overworld(map_t *map, int seed) {
+void generate_overworld(map_t *map) {
     if (!map) return;
 
     /* Parameters chosen to give large smooth patches (farmland-looking).
@@ -88,7 +88,7 @@ void generate_overworld(map_t *map, int seed) {
         for (int x = 0; x < MAP_WIDTH; x++) {
             double nx = x * scale;
             double ny = y * scale;
-            double v = perlin_fbm(nx, ny, seed, octaves, persistence, lacunarity);
+            double v = perlin_fbm(nx, ny, map->seed, octaves, persistence, lacunarity);
             /* normalize to [0,1] */
             double n = (v + 1.0) * 0.5;
 

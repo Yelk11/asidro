@@ -13,32 +13,41 @@
  * implementation that delegates to the overworld generator by default.
  */
 
-map_t *map_init(void)
-{
-    return map_gen(0, 1);
-}
-
-map_t* map_gen(int level, int seed)
+map_t *map_init(int seed)
 {
     map_t *map = calloc(1, sizeof(map_t));
-    if (!map) return NULL;
-    if(level == 0)
-    {
-        generate_overworld(map, seed);
-    }else{
-        generate_underworld(map, level, seed);
-    }
+    map->level = 0;
+    map->seed = seed;
     return map;
 }
 
-map_t* ascend(map_t* map)
+void map_gen(map_t* map)
 {
-
+    if(map->level == 0)
+    {
+        generate_overworld(map);
+    }else{
+        generate_underworld(map);
+    }
 }
 
-map_t* descend(map_t* map)
+void ascend(map_t* map)
 {
+    /* overworld starts at 0, dungeon 1-infinity */
+    if(map->level >= 1)
+    {
+        map->level--;
+    }
+    map_gen(map);
+}
 
+void descend(map_t* map)
+{
+    if(map->level >= 1)
+    {
+        map->level++;
+    }
+    map_gen(map);
 }
 
 

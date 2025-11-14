@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include "sched.h"
-#include "entity.h"
+#include "actor.h"
 #include "game.h"
 
 act_node *sched_init(actor_t* actor)
@@ -19,6 +19,12 @@ actor_t *sched_current(act_node *node)
 
 actor_t *sched_peek(act_node *node, int num)
 {
+    act_node* temp = node;
+    for(int i = 0; i < num; i++)
+    {
+        sched_advance(temp);
+    }
+    return sched_current(temp);
 }
 
 void sched_advance(act_node *node)

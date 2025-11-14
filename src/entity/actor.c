@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include "entity.h"
+#include "actor.h"
 #include "game.h"
 
 /*

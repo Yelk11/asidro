@@ -2,14 +2,15 @@
 #include <stdlib.h>
 
 #include "map.h"
-#include "entity.h"
+#include "actor.h"
 #include "game.h"
 #include "screen.h"
 #include "sched.h"
 
 void initializeGame(game_t* game)
 {
-    game->map = map_init();
+    int seed = 0;
+    game->map = map_init(seed);
     game->ch = '0';
     game->player = make_actor('@', 0,0,10, player_act, game);
     game->action_list = sched_init(game->player);

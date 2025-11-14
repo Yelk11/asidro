@@ -1,5 +1,5 @@
-#ifndef ENTITY_H
-#define ENTITY_H
+#ifndef ACTOR_H
+#define ACTOR_H
 
 #include <stdbool.h>
 
@@ -27,11 +27,6 @@ typedef enum {
     NPC,
     MONSTER
 }actor_type;
-
-
-
-
-
 
 
 actor_t* make_actor(char ascii_char, int x, int y, int speed, void (*act_fn)(actor_t*), void* data);

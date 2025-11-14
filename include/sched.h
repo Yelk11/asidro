@@ -1,7 +1,7 @@
 #ifndef SCHED_H
 #define SCHED_H
 
-#include "entity.h"
+#include "actor.h"
 
 
 typedef struct act_node{

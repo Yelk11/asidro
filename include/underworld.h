@@ -4,7 +4,7 @@
 #include "map.h"
 
 
-void generate_underworld(map_t* map, int level, int seed);
+void generate_underworld(map_t* map);
 
 
 
