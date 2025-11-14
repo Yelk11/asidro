@@ -11,7 +11,7 @@ typedef struct actor_t{
     int energy;     // accumulated
     bool isAlive;
 
-    void (*act)(struct actor *self);
+    void (*act)(struct actor_t *self);
     void* data;
 }actor_t;
 
@@ -34,7 +34,7 @@ typedef enum {
 
 
 
-actor_t* make_actor(char ascii_char, int x, int y, int speed, void (*act_fn)(actor_t*), void* data);
+actor_t* make_actor(char ascii_char, int x, int y, int speed, void (*act_fn)(actor_t*));
 void player_act(actor_t* e);
 void monster_act(actor_t* self);
 void npc_act(actor_t* self);

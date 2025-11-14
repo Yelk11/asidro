@@ -8,8 +8,8 @@ void update_screen(game_t* game)
     int scr_h, scr_w;
     getmaxyx(stdscr, scr_h, scr_w);
 
-    int px = game->player->pos->x;
-    int py = game->player->pos->y;
+    int px = game->player->x;
+    int py = game->player->y;
 
 
 

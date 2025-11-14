@@ -3,13 +3,14 @@
 
 #include "entity.h"
 
+
 typedef struct act_node{
     struct act_node* next;
     struct act_node* last;
     actor_t* entity;
 }act_node;
 
-act_node *sched_init();
+act_node *sched_init(actor_t* actor);
 
 void sched_add(act_node* node, actor_t* entity, actor_type type);
 

@@ -1,13 +1,14 @@
 #include <stdlib.h>
 #include "sched.h"
 #include "entity.h"
+#include "game.h"
 
-act_node *sched_init()
+act_node *sched_init(actor_t* actor)
 {
     act_node *node = calloc(1, sizeof(act_node));
     node->last = node;
     node->next = node;
-    node->entity = make_actor('@', 10,10, 100, player_act);
+    node->entity = actor;
     return node;
 }
 

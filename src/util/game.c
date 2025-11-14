@@ -10,8 +10,8 @@
 void initializeGame(game_t* game)
 {
     game->map = map_init();
-
-    game->action_list = sched_init(make_actor('@', 0,0,10, player_act, game));
+    game->player = make_actor('@', 0,0,10, player_act);
+    game->action_list = sched_init(game->player);
 }
 
 void updateGame(game_t* game)
