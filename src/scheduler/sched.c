@@ -23,5 +23,6 @@ actor_t *sched_peek(act_node *node, int num)
 
 void sched_advance(act_node *node)
 {
+    node->entity->act(node->entity);
     node = node->next;
 }
