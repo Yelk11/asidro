@@ -3,8 +3,8 @@
 
 
 
-#define MAP_HEIGHT 500
-#define MAP_WIDTH 500
+#define MAP_HEIGHT 100
+#define MAP_WIDTH 100
 
 #define WALL '#'
 #define FLOOR '.'
@@ -25,5 +25,7 @@ int in_bounds(int x, int y);
 void set_tile(map_t* map, int x, int y, char c);
 char get_tile(map_t* map, int x, int y);
 void fill_map(map_t *map, char c);
+void map_ascend(map_t* map);
+void map_descend(map_t* map);
 
 #endif

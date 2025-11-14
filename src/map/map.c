@@ -31,7 +31,7 @@ void map_gen(map_t* map)
     }
 }
 
-void ascend(map_t* map)
+void map_ascend(map_t* map)
 {
     /* overworld starts at 0, dungeon 1-infinity */
     if(map->level >= 1)
@@ -41,7 +41,7 @@ void ascend(map_t* map)
     map_gen(map);
 }
 
-void descend(map_t* map)
+void map_descend(map_t* map)
 {
     if(map->level >= 1)
     {

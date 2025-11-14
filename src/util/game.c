@@ -11,6 +11,8 @@ void initializeGame(game_t* game)
 {
     int seed = 0;
     game->map = map_init(seed);
+    game->map->level=1;
+    map_gen(game->map);
     game->ch = '0';
     game->player = make_actor('@', 0,0,10, player_act, game);
     game->action_list = sched_init(game->player);
