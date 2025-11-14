@@ -1,40 +1,36 @@
-#include <stdlib.h>
 
+#include <stdlib.h>
 #include "entity.h"
 
-position_t *create_position(int x, int y)
+position_t* create_position(int x, int y)
 {
-    position_t *pos = calloc(1, sizeof(position_t));
-    pos->x = x;
-    pos->y = y;
-    return pos;
-}
-entity_t *createEntity(position_t *start_pos, char charector)
-{
-    entity_t *newPlayer = calloc(1, sizeof(entity_t));
-    newPlayer->pos = start_pos;
-    newPlayer->ascii_char = charector;
-
-    return newPlayer;
+	position_t* p = calloc(1, sizeof(position_t));
+	if (!p) return NULL;
+	p->x = x;
+	p->y = y;
+	return p;
 }
 
-void moveEntity(entity_t *e, char dir)
+entity_t* createEntity(position_t* pos, char character)
 {
-    switch (dir)
-    {
-    case 'w':
-        e->pos->y--;
-        break;
-    case 'a':
-        e->pos->x--;
-        break;
-    case 's':
-        e->pos->y++;
-        break;
-    case 'd':
-        e->pos->x++;
-        break;
-    default:
-        break;
-    }
+	entity_t* e = calloc(1, sizeof(entity_t));
+	if (!e) return NULL;
+	e->pos = pos;
+	e->ascii_char = character;
+	return e;
 }
+
+void moveEntity(entity_t* e, char dir)
+{
+	if (!e || !e->pos) return;
+	switch (dir) {
+		case 'w': case 'k': e->pos->y -= 1; break;
+		case 's': case 'j': e->pos->y += 1; break;
+		case 'a': case 'h': e->pos->x -= 1; break;
+		case 'd': case 'l': e->pos->x += 1; break;
+		default: break;
+	}
+}
+
+
+

@@ -1,0 +1,76 @@
+
+
+
+MAP
+there will be an overworld and underworld
+
+overworld:
+    farming
+    Items
+        Hoe -> reinforced Hoe -> Mythic earth splitter
+        Watering Can -> arcane watering Can
+    Crafting/Processing
+        Mill -> seed:flour
+        Fermenter -> Potion/Buffs
+        drying rack / Loom -> clothig and armour
+
+
+
+underworld : 
+    Dungeon
+    Weapons:
+        Sword
+        Rusty Hoe
+        Axe
+        Gloom bow (?)
+        Bone Scythe
+        Mossblade (heals 1-2HP after kill)
+    Armour:
+        Leather Apron → Ironvine Vest → Crystal Carapace Armor
+        Miner’s Helm – built-in light radius.
+        Burrower Boots – move faster on dirt tiles.
+        Golem Plate – high defense, low speed.
+    Dungeon Tools
+        Rope Reel – climb pits/shortcuts. (?)
+        Bomb Satchel – break rocks or damage groups.
+        Pickaxe – mine ore for farm upgrades.
+        Soul Lantern – stores monster souls; used in crafting.
+    Materials
+        Aether Ore – upgrade farming tools to magical versions.
+        Gloomstone – used for lanterns or stealth gear.
+        Silkweb Thread – high-tier cloth.
+        Bonepowder – for summoning crops + necro-potions.
+General
+    Potions:
+        Growth Tonic – instantly finishes a crop.
+        Overgrowth Potion – roots burst from the ground, trapping enemies.
+        Sunbrew – temporarily increases vision radius.
+        Stoneflesh Soup – temporary +DEF buff.
+        Nightmilk – slows enemies around you.
+
+    🔮 Special Magical Items
+    These give long-term progression.
+    Farm Totems
+        • Totem of Soil – boosts crop quality.
+        • Totem of Abundance – more harvest yield.
+        • Totem of Spirits – attracts friendly monster helpers.
+    Dungeon Relics
+        • Heart of the Deep – unlocks new seed mutations.
+        • Mirror of Roots – teleport between overworld and dungeon checkpoints.
+        • Hollow Crown – lets you summon tamed monsters underground.
+    These are the best “theme glue” items:
+        Spore Bombs – crafted from Glowshrooms; create fog that confuses monsters.
+        Vine Trap Kits – from Ironvine Fibers; place snares.
+        Rootwalkers – boots that grow roots beneath you, creating temporary bridges.
+        Fertilized Arrows – arrows that sprout on impact and entangle enemies.
+        Greenfire Flask – burns only monsters, not crops.
+
+
+
+
+
+
+
+
+
+

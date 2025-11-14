@@ -8,7 +8,7 @@ OBJ := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 LDFLAGS  := -lncurses
 CPPFLAGS := -Iinclude -MMD -MP
-CFLAGS   := -Wall -g
+CFLAGS   := -Wall -g -Iinclude
 
 
 .PHONY: all clean
