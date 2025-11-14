@@ -11,11 +11,12 @@
             "program": "${workspaceFolder}/main",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${cwd}",
+            "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "lldb"
-        },
+        }
     ]
+
     
 }

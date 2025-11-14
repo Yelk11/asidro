@@ -23,6 +23,7 @@ actor_t* make_actor(char ascii_char, int x, int y, int speed, void (*act_fn)(act
     a->isAlive = true;
 
     a->id = rand();        // or use a monotonic counter
+    a->data = data;
     return a;
 }
 
