@@ -6,14 +6,16 @@
 typedef struct act_node{
     struct act_node* next;
     struct act_node* last;
-    entity_t* entity;
+    actor_t* entity;
 }act_node;
 
-act_node *sched_init(entity_t* entity);
+act_node *sched_init();
 
-entity_t* sched_current(act_node* node);
+void sched_add(act_node* node, actor_t* entity, actor_type type);
 
-entity_t* sched_peek(act_node* node, int num);
+actor_t* sched_current(act_node* node);
+
+actor_t* sched_peek(act_node* node, int num);
 
 void sched_advance(act_node* node);
 

@@ -1,16 +1,19 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
+#include <stdbool.h>
 
-typedef struct position_t{
-    int x;
-    int y;
-}position_t;
-
-typedef struct entity_t{
-    struct position_t* pos;
+typedef struct actor_t{
+    int id;
     char ascii_char;
-}entity_t;
+    int x, y;
+    int speed;      // higher = more turns
+    int energy;     // accumulated
+    bool isAlive;
+
+    void (*act)(struct actor *self);
+    void* data;
+}actor_t;
 
 typedef enum {
     UP,
@@ -19,10 +22,22 @@ typedef enum {
     LEFT
 }direction;
 
-position_t* create_position(int x, int y);
-entity_t* createEntity(position_t* pos, char charector);
-void movePlayer(entity_t* e, char dir);
+typedef enum {
+    PLAYER,
+    NPC,
+    MONSTER
+}actor_type;
 
+
+
+
+
+
+
+actor_t* make_actor(char ascii_char, int x, int y, int speed, void (*act_fn)(actor_t*), void* data);
+void player_act(actor_t* e);
+void monster_act(actor_t* self);
+void npc_act(actor_t* self);
 
 
 #endif

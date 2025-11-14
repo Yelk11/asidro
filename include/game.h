@@ -7,10 +7,12 @@
 
 #include "map.h"
 #include "entity.h"
+#include "sched.h"
 
 typedef struct game_t {
 	map_t *map;
-	entity_t *player;
+    act_node* action_list;
+    char ch;
 } game_t;
 
 void initializeGame(game_t* game);

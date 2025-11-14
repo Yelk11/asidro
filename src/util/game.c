@@ -5,28 +5,24 @@
 #include "entity.h"
 #include "game.h"
 #include "screen.h"
-#include "linked_list.h"
+#include "sched.h"
 
 void initializeGame(game_t* game)
 {
     game->map = map_init();
-    position_t* start_pos = create_position(5,5);
-    game->player = createEntity(start_pos, '@');
-    
+
+    game->action_list = sched_init(make_actor('@', 0,0,10, player_act, game));
 }
 
 void updateGame(game_t* game)
 {
-    int ch;
-
     curs_set(0);
     nodelay(stdscr, true);
     
     do{
-        ch = getch();
-        movePlayer(game->player, ch);
+        game->ch = getch();
         update_screen(game);
-	}while(ch != 'q');
+	}while(game->ch != 'q');
     
 }
 

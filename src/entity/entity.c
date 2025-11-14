@@ -1,36 +1,54 @@
 
 #include <stdlib.h>
 #include "entity.h"
+#include <stdbool.h>
+#include "game.h"
 
-position_t* create_position(int x, int y)
+/*
+actor_t* player = make_actor(10,10, 100, player_act);
+actor_t* goblin = make_actor(20,15, 80, monster_act);  // goblin is slower
+actor_t* bat    = make_actor(5,5, 150, monster_act);  
+*/
+
+actor_t* make_actor(char ascii_char, int x, int y, int speed, void (*act_fn)(actor_t*), void* data)
 {
-	position_t* p = calloc(1, sizeof(position_t));
-	if (!p) return NULL;
-	p->x = x;
-	p->y = y;
-	return p;
+    actor_t* a = malloc(sizeof(actor_t));
+    a->ascii_char = ascii_char;
+    a->x = x;
+    a->y = y;
+    a->speed = speed;      // 100 = normal, >100 = faster, <100 = slower
+    a->energy = 0;         // starts with no accumulated energy
+    a->act = act_fn;       // behavior callback
+    a->isAlive = true;
+
+    a->id = rand();        // or use a monotonic counter
+    a->data = data;
+    return a;
 }
 
-entity_t* createEntity(position_t* pos, char character)
-{
-	entity_t* e = calloc(1, sizeof(entity_t));
-	if (!e) return NULL;
-	e->pos = pos;
-	e->ascii_char = character;
-	return e;
-}
 
-void movePlayer(entity_t* e, char dir)
+void player_act(actor_t* self)
 {
-	if (!e || !e->pos) return;
-	switch (dir) {
-		case 'w': case 'k': e->pos->y -= 1; break;
-		case 's': case 'j': e->pos->y += 1; break;
-		case 'a': case 'h': e->pos->x -= 1; break;
-		case 'd': case 'l': e->pos->x += 1; break;
+    game_t* game = (game_t*)self->data;
+	switch (game->ch) {
+		case 'w': case 'k': self->y -= 1; break;
+		case 's': case 'j': self->y += 1; break;
+		case 'a': case 'h': self->x -= 1; break;
+		case 'd': case 'l': self->x += 1; break;
 		default: break;
 	}
 }
 
+void monster_act(actor_t* self) {
+    // simple chasing AI
+    // if (distance_to_player(self) < 10) {
+    //     move_towards_player(self);
+    // } else {
+    //     wander_randomly(self);
+    // }
+}
 
+void npc_act(actor_t* self)
+{
 
+}
