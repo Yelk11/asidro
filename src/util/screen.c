@@ -1,6 +1,9 @@
 #include "screen.h"
 #include "ncurses.h"
 #include "map.h"
+
+
+
 void update_screen(game_t* game)
 {
     int scr_h, scr_w;
@@ -38,10 +41,17 @@ void update_screen(game_t* game)
             mvaddch(y, x, ch);
         }
     }
-
-    // ---- DRAW PLAYER WITH CAMERA OFFSET ----
     int draw_x = px - cam_x;
     int draw_y = py - cam_y;
+    /* Draw actors */
+    sched_node* current = game->action_list;
+    do {
+        if (draw_x >= 0 && draw_x < scr_w && draw_y >= 0 && draw_y < scr_h)
+            mvaddch(draw_y, draw_x, current->entity->ascii_char);
+        sched_advance(current);
+    } while (current != game->action_list);
+    // ---- DRAW PLAYER WITH CAMERA OFFSET ----
+    
     if (draw_x >= 0 && draw_x < scr_w && draw_y >= 0 && draw_y < scr_h)
         mvaddch(draw_y, draw_x, game->player->ascii_char);
 

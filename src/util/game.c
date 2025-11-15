@@ -6,6 +6,7 @@
 #include "game.h"
 #include "screen.h"
 #include "sched.h"
+#include "item.h"
 
 void initializeGame(game_t* game)
 {
@@ -14,7 +15,9 @@ void initializeGame(game_t* game)
     game->map->level=1;
     map_gen(game->map);
     game->ch = '0';
-    game->player = make_actor('@', 0,0,10, player_act, game);
+
+    make_actor('@', 0,0,10, player_act, game);
+
     game->action_list = sched_init(game->player);
 }
 

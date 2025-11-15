@@ -53,3 +53,8 @@ void npc_act(actor_t* self)
 {
 
 }
+
+void place_actor(map_t* map, actor_t* actor)
+{
+    
+}

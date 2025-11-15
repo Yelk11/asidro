@@ -1,4 +1,5 @@
 #include "underworld.h"
+#include "actor.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -276,17 +277,4 @@ void generate_underworld(map_t* map)
     free_bsp(root);
 }
 
-/* ---------------------------- small test main ---------------------------- */
-/* Uncomment to build a standalone test program (prints top-left area).
-int main(void)
-{
-    map_t m;
-    generate_underworld(&m);
 
-    for (int y = 0; y < 80; y++) {
-        for (int x = 0; x < 200; x++) putchar(m.map[y][x]);
-        putchar('\\n');
-    }
-    return 0;
-}
-*/

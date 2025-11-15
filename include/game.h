@@ -11,7 +11,7 @@
 
 typedef struct game_t {
 	map_t *map;
-    act_node* action_list;
+    sched_node* action_list;
     char ch;
     actor_t* player;
 } game_t;
