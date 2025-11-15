@@ -1,7 +1,7 @@
 #ifndef UNDERWORLD_H
 #define UNDERWORLD_H
 
-#include "map.h"
+typedef struct map_t map_t;
 
 #define MIN_LEAF_SIZE 12
 #define MAX_LEAF_SIZE 25
@@ -17,6 +17,7 @@ typedef struct bsp_node {
 } bsp_node;
 
 
-void generate_underworld(map_t* map);
+bsp_node* generate_underworld(map_t* map);
+void under_get_player_spawn(map_t* map, int* x, int* y);
 
 #endif

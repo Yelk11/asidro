@@ -29,12 +29,10 @@ typedef enum {
     LEFT
 }direction;
 
-
-
-
 actor_t* make_actor(actor_type type, int x, int y, int speed, void (*act_fn)(actor_t*), void* data);
 void player_act(actor_t* e);
 void monster_act(actor_t* self);
 void npc_act(actor_t* self);
+
 
 #endif

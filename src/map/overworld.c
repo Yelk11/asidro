@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <math.h>
+#include <stdbool.h>
 #include "overworld.h"
 
 /* Simple integer hash / noise function. Deterministic for given x,y,seed.
@@ -103,5 +104,43 @@ void generate_overworld(map_t *map) {
     }
 }
 
+bool over_is_walkable(map_t* map, int x, int y)
+{
+    if (!map) return false;
+    if (x < 0 || y < 0 || x >= MAP_WIDTH || y >= MAP_HEIGHT)
+        return false;
+
+    char t = map->map[y][x];
+
+    return (t == '.');   /* dirt is walkable */
+}
 
 
+void over_get_player_spawn(map_t* map, int* x, int* y)
+{
+    const int MAX_ATTEMPTS = 5000;
+
+    for (int i = 0; i < MAX_ATTEMPTS; i++)
+    {
+        int rx = rand() % MAP_WIDTH;
+        int ry = rand() % MAP_HEIGHT;
+
+        if (over_is_walkable(map, rx, ry)) {
+            *x = rx;
+            *y = ry;
+            return;
+        }
+    }
+
+    /* Fallback if map is extremely dense — brute scan */
+    for (int iy = 0; iy < MAP_HEIGHT; iy++)
+        for (int ix = 0; ix < MAP_WIDTH; ix++)
+            if (over_is_walkable(map, ix, iy)) {
+                *x = ix;
+                *y = iy;
+                return;
+            }
+
+    /* Absolute worst case: no walkable tiles */
+    *x = *y = 0;
+}

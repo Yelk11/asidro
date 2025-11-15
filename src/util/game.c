@@ -1,22 +1,30 @@
 #include <ncurses.h>
 #include <stdlib.h>
 
+#include "game.h"
+#include "game_cfg.h"
 #include "map.h"
 #include "actor.h"
-#include "game.h"
 #include "screen.h"
 #include "sched.h"
 #include "item.h"
+
+void game_init_level(game_t* game)
+{
+    map_gen(game->map);
+    game_spawn_player(game);
+    game_spawn_npc(game);
+    game_spawn_monsters(game);
+}
 
 void initializeGame(game_t* game)
 {
     int seed = 0;
     game->map = map_init(seed);
     game->map->level=1;
-    map_gen(game->map);
     game->ch = '0';
-
-    game->action_list = sched_init(make_actor(PLAYER, 0,0,10, player_act, game));
+    // game->action_list = sched_init(make_actor(PLAYER, 0,0,10, player_act, game));
+    game_init_level(game);
 }
 
 void updateGame(game_t* game)
@@ -26,7 +34,7 @@ void updateGame(game_t* game)
     
     do{
         game->ch = getch();
-        sched_advance(game->action_list);
+        sched_cycle_actions(game->action_list);
         update_screen(game);
 	}while(game->ch != 'q');
     

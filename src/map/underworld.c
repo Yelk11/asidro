@@ -1,11 +1,11 @@
-#include "underworld.h"
-#include "actor.h"
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
 #include <stdbool.h>
+
+#include "map.h"
+#include "underworld.h"
 
 /* ---------------------- helpers: node allocation & free -------------------- */
 static bsp_node* make_node(int x, int y, int w, int h)
@@ -252,9 +252,9 @@ static void bsp_iterative_split(bsp_node *root)
 }
 
 /* ---------------------------- public API -------------------------------- */
-void generate_underworld(map_t* map)
+bsp_node* generate_underworld(map_t* map)
 {
-    if (!map) return;
+
 
     /* Ideally seed RNG once in program start; seeding here for convenience */
     srand((unsigned)time(NULL));
@@ -265,7 +265,6 @@ void generate_underworld(map_t* map)
             map->map[y][x] = '#';
 
     bsp_node* root = make_node(0, 0, MAP_WIDTH, MAP_HEIGHT);
-    if (!root) return;
 
     /* split iteratively (safe) */
     bsp_iterative_split(root);
@@ -273,8 +272,42 @@ void generate_underworld(map_t* map)
     /* carve rooms and connect corridors */
     generate_tree(map, root);
 
-    /* free tree (optional) */
-    free_bsp(root);
+    return root;
 }
 
+void under_get_player_spawn(map_t* map, int* x, int* y)
+{
+    if (!map || !x || !y) return;
+
+    /* 1. Try to find *any* walkable tile in a room.
+       Rooms are marked '.' by the generator. */
+
+    const int MAX_ATTEMPTS = 5000;
+
+    for (int i = 0; i < MAX_ATTEMPTS; i++) {
+        int rx = rand() % MAP_WIDTH;
+        int ry = rand() % MAP_HEIGHT;
+
+        if (map->map[ry][rx] == '.') {
+            *x = rx;
+            *y = ry;
+            return;
+        }
+    }
+
+    /* 2. Fallback: brute scan (guaranteed not to hang) */
+    for (int y0 = 0; y0 < MAP_HEIGHT; y0++) {
+        for (int x0 = 0; x0 < MAP_WIDTH; x0++) {
+            if (map->map[y0][x0] == '.') {
+                *x = x0;
+                *y = y0;
+                return;
+            }
+        }
+    }
+
+    /* 3. Absolute worst-case fallback */
+    *x = 1;
+    *y = 1;
+}
 

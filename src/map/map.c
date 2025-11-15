@@ -26,8 +26,10 @@ void map_gen(map_t* map)
     if(map->level == 0)
     {
         generate_overworld(map);
+        
     }else{
-        generate_underworld(map);
+        map->root = generate_underworld(map);
+        
     }
 }
 
@@ -84,4 +86,16 @@ void fill_map(map_t *map, char c)
     for (int y = 0; y < MAP_HEIGHT; y++)
         for (int x = 0; x < MAP_WIDTH; x++)
             map->map[y][x] = c;
+}
+
+void map_get_player_spawn(map_t* map, int* x, int* y)
+{
+    if(map->level == 0)
+    {
+        over_get_player_spawn(map, x, y);
+    }
+    else
+    {
+        under_get_player_spawn(map, x, y);
+    }
 }

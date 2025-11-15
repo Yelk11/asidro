@@ -10,5 +10,6 @@
  *  - 'o' rock
  */
 void generate_overworld(map_t *map);
+void over_get_player_spawn(map_t* map, int* x, int* y);
 
 #endif

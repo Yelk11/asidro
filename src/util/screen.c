@@ -3,7 +3,6 @@
 #include "map.h"
 
 
-
 void update_screen(game_t* game)
 {
     int scr_h, scr_w;
