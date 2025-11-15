@@ -4,6 +4,7 @@
 
 #include "actor.h"
 #include "game.h"
+#include "map.h"
 
 unsigned int next_id(void) {
     static unsigned int counter = 0;
@@ -41,14 +42,20 @@ actor_t* make_actor(actor_type type, int x, int y, int speed, void (*act_fn)(act
 void player_act(actor_t* self)
 {
     game_t* game = (game_t*)self->data;
-    
+    int dx = 0;
+    int dy = 0;
 	switch (game->ch) {
-		case 'w': case 'k': self->y -= 1; break;
-		case 's': case 'j': self->y += 1; break;
-		case 'a': case 'h': self->x -= 1; break;
-		case 'd': case 'l': self->x += 1; break;
+		case 'w': case 'k': dy -= 1; break;
+		case 's': case 'j': dy += 1; break;
+		case 'a': case 'h': dx -= 1; break;
+		case 'd': case 'l': dx += 1; break;
 		default: break;
 	}
+    if(map_is_walkable(game->map,self->x + dx, self->y + dy))
+    {
+        self->x += dx;
+        self->y += dy;
+    }
 }
 
 void monster_act(actor_t* self) {

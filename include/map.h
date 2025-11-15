@@ -1,6 +1,8 @@
 #ifndef MAP_H
 #define MAP_H
 
+#include <stdbool.h>
+
 #include "underworld.h"
 
 #define MAP_HEIGHT 100
@@ -29,5 +31,5 @@ void fill_map(map_t *map, char c);
 void map_ascend(map_t* map);
 void map_descend(map_t* map);
 void map_get_player_spawn(map_t* map, int* x, int* y);
-
+bool map_is_walkable(map_t* map, int x, int y);
 #endif

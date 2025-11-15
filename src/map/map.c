@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <math.h>
+#include <stdbool.h>
 #include "map.h"
 
 #include <time.h>
@@ -98,4 +99,10 @@ void map_get_player_spawn(map_t* map, int* x, int* y)
     {
         under_get_player_spawn(map, x, y);
     }
+}
+
+bool map_is_walkable(map_t* map, int x, int y)
+{
+    char ch = map->map[y][x];
+    return (ch == FLOOR) || (ch == SOIL);
 }
