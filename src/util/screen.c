@@ -8,9 +8,9 @@ void update_screen(game_t* game)
 {
     int scr_h, scr_w;
     getmaxyx(stdscr, scr_h, scr_w);
-
-    int px = game->player->x;
-    int py = game->player->y;
+    actor_t* player = sched_get_by_id(game->action_list, 0);
+    int px = player->x;
+    int py = player->y;
 
     // ---- CAMERA CALCULATION ----
     int cam_x = px - scr_w / 2;
@@ -53,7 +53,7 @@ void update_screen(game_t* game)
     // ---- DRAW PLAYER WITH CAMERA OFFSET ----
     
     if (draw_x >= 0 && draw_x < scr_w && draw_y >= 0 && draw_y < scr_h)
-        mvaddch(draw_y, draw_x, game->player->ascii_char);
+        mvaddch(draw_y, draw_x, player->ascii_char);
 
     refresh();
 }

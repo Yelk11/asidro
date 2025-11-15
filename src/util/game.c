@@ -16,9 +16,7 @@ void initializeGame(game_t* game)
     map_gen(game->map);
     game->ch = '0';
 
-    make_actor('@', 0,0,10, player_act, game);
-
-    game->action_list = sched_init(game->player);
+    game->action_list = sched_init(make_actor(PLAYER, 0,0,10, player_act, game));
 }
 
 void updateGame(game_t* game)

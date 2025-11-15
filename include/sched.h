@@ -20,5 +20,6 @@ actor_t* sched_peek(sched_node* node, int num);
 
 void sched_advance(sched_node* node);
 
+actor_t* sched_get_by_id(sched_node* root, int id);
 
 #endif

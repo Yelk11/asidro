@@ -32,3 +32,15 @@ void sched_advance(sched_node *node)
     node->entity->act(node->entity);
     node = node->next;
 }
+
+
+actor_t* sched_get_by_id(sched_node* root, int id)
+{
+    while(root->entity->id != id)
+    {
+        sched_advance(root);
+    }
+    return root->entity;
+}
+
+

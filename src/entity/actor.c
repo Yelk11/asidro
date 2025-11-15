@@ -5,16 +5,27 @@
 #include "actor.h"
 #include "game.h"
 
-/*
-actor_t* player = make_actor(10,10, 100, player_act);
-actor_t* goblin = make_actor(20,15, 80, monster_act);  // goblin is slower
-actor_t* bat    = make_actor(5,5, 150, monster_act);  
-*/
+unsigned int next_id(void) {
+    static unsigned int counter = 0;
+    return counter++;   // returns current value, then increments
+}
 
-actor_t* make_actor(char ascii_char, int x, int y, int speed, void (*act_fn)(actor_t*), void* data)
+
+char actor_get_ascii(actor_type type)
+{
+    switch(type)
+    {
+        case PLAYER: return '@'; break;
+        case NPC: return 'G'; break;
+        case MONSTER: return 'M'; break;
+        default: return '?'; break;
+    }
+}
+
+actor_t* make_actor(actor_type type, int x, int y, int speed, void (*act_fn)(actor_t*), void* data)
 {
     actor_t* a = malloc(sizeof(actor_t));
-    a->ascii_char = ascii_char;
+    a->ascii_char = actor_get_ascii(type);
     a->x = x;
     a->y = y;
     a->speed = speed;      // 100 = normal, >100 = faster, <100 = slower
@@ -22,7 +33,7 @@ actor_t* make_actor(char ascii_char, int x, int y, int speed, void (*act_fn)(act
     a->act = act_fn;       // behavior callback
     a->isAlive = true;
 
-    a->id = rand();        // or use a monotonic counter
+    a->id = next_id();        // or use a monotonic counter
     a->data = data;
     return a;
 }
