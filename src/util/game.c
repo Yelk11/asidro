@@ -33,6 +33,10 @@ void updateGame(game_t* game)
     
     do{
         game->ch = getch();
+        if(game->ch == 'p')
+        {
+            game_debug_dump(game);
+        }
         sched_cycle_actions(game->action_list);
         update_screen(game);
 	}while(game->ch != 'q');

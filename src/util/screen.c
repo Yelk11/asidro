@@ -2,12 +2,11 @@
 #include "ncurses.h"
 #include "map.h"
 
-
-void update_screen(game_t* game)
+void update_screen(game_t *game)
 {
     int scr_h, scr_w;
     getmaxyx(stdscr, scr_h, scr_w);
-    actor_t* player = sched_get_by_id(game->action_list, 0);
+    actor_t *player = sched_get_by_id(game->action_list, 0);
     int px = player->x;
     int py = player->y;
 
@@ -16,8 +15,10 @@ void update_screen(game_t* game)
     int cam_y = py - scr_h / 2;
 
     // Clamp camera to map bounds safely
-    if (cam_x < 0) cam_x = 0;
-    if (cam_y < 0) cam_y = 0;
+    if (cam_x < 0)
+        cam_x = 0;
+    if (cam_y < 0)
+        cam_y = 0;
     cam_x = (cam_x > MAP_WIDTH - scr_w) ? ((MAP_WIDTH - scr_w > 0) ? MAP_WIDTH - scr_w : 0) : cam_x;
     cam_y = (cam_y > MAP_HEIGHT - scr_h) ? ((MAP_HEIGHT - scr_h > 0) ? MAP_HEIGHT - scr_h : 0) : cam_y;
 
@@ -34,7 +35,8 @@ void update_screen(game_t* game)
                 map_x >= 0 && map_x < MAP_WIDTH)
             {
                 ch = game->map->map[map_y][map_x];
-                if (!ch) ch = 'X';
+                if (!ch)
+                    ch = 'X';
             }
 
             mvaddch(y, x, ch);
@@ -43,14 +45,25 @@ void update_screen(game_t* game)
     int draw_x = px - cam_x;
     int draw_y = py - cam_y;
     /* Draw actors */
-    sched_node* current = game->action_list;
-    do {
-        if (draw_x >= 0 && draw_x < scr_w && draw_y >= 0 && draw_y < scr_h)
-            mvaddch(draw_y, draw_x, current->entity->ascii_char);
-        sched_advance(current);
-    } while (current != game->action_list);
+    sched_node *cur = game->action_list;
+    sched_node *head = cur;
+
+    do
+    {
+        actor_t *a = cur->entity;
+
+        int ax = a->x - cam_x;
+        int ay = a->y - cam_y;
+
+        if (ax >= 0 && ax < scr_w && ay >= 0 && ay < scr_h)
+            mvaddch(ay, ax, a->ascii_char);
+
+        cur = cur->next;
+
+    } while (cur != head);
+
     // ---- DRAW PLAYER WITH CAMERA OFFSET ----
-    
+
     if (draw_x >= 0 && draw_x < scr_w && draw_y >= 0 && draw_y < scr_h)
         mvaddch(draw_y, draw_x, player->ascii_char);
 
