@@ -311,3 +311,55 @@ void under_get_player_spawn(map_t* map, int* x, int* y)
     *y = 1;
 }
 
+void under_get_npc_spawn(map_t* map, int* x, int* y, int px, int py)
+{
+    if (!map || !x || !y) return;
+
+    const int MAX_ATTEMPTS = 5000;
+    const int MIN_DIST_FROM_PLAYER = 12; // tweak to taste
+
+    for (int i = 0; i < MAX_ATTEMPTS; i++) {
+
+        int rx = rand() % MAP_WIDTH;
+        int ry = rand() % MAP_HEIGHT;
+
+        /* must be walkable/floor */
+        if (map->map[ry][rx] != '.') continue;
+
+        /* keep NPCs from spawning right beside the player */
+        int dx = rx - px;
+        int dy = ry - py;
+        int dist2 = dx*dx + dy*dy;
+        if (dist2 < MIN_DIST_FROM_PLAYER * MIN_DIST_FROM_PLAYER)
+            continue;
+
+        /* ensure the tile is not cramped
+           (avoid tiny 1-tile dead ends) */
+        int open_adj = 0;
+        if (ry > 0              && map->map[ry-1][rx] == '.') open_adj++;
+        if (ry < MAP_HEIGHT-1   && map->map[ry+1][rx] == '.') open_adj++;
+        if (rx > 0              && map->map[ry][rx-1] == '.') open_adj++;
+        if (rx < MAP_WIDTH-1    && map->map[ry][rx+1] == '.') open_adj++;
+
+        if (open_adj < 2) continue; // avoid cramped dead ends
+
+        *x = rx;
+        *y = ry;
+        return;
+    }
+
+    /* last-resort fallback */
+    for (int ry = 0; ry < MAP_HEIGHT; ry++) {
+        for (int rx = 0; rx < MAP_WIDTH; rx++) {
+            if (map->map[ry][rx] == '.') {
+                *x = rx;
+                *y = ry;
+                return;
+            }
+        }
+    }
+
+    /* absolute fallback */
+    *x = 1;
+    *y = 1;
+}

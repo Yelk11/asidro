@@ -23,7 +23,6 @@ void initializeGame(game_t* game)
     game->map = map_init(seed);
     game->map->level=1;
     game->ch = '0';
-    // game->action_list = sched_init(make_actor(PLAYER, 0,0,10, player_act, game));
     game_init_level(game);
 }
 

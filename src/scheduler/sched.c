@@ -107,4 +107,20 @@ actor_t* sched_get_by_id(sched_node* root, int id)
     return root->entity;
 }
 
+actor_t* sched_get_player(sched_node* root)
+{
+    if (!root) return NULL;
+
+    sched_node* cur = root;
+
+    do {
+        if (cur->entity && cur->entity->type == PLAYER)
+            return cur->entity;
+
+        cur = cur->next;
+    } while (cur != root);
+
+    return NULL;  // no player in the list
+}
+
 

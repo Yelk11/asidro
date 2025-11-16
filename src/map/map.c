@@ -106,3 +106,14 @@ bool map_is_walkable(map_t* map, int x, int y)
     char ch = map->map[y][x];
     return (ch == FLOOR) || (ch == SOIL);
 }
+void map_get_npc_spawn(map_t* map, int *x, int* y, int px, int py)
+{
+    if(map->level == 0)
+    {
+        over_get_npc_spawn(map, x, y, px, py);
+    }
+    else
+    {
+        under_get_npc_spawn(map, x, y, px, py);
+    }
+}

@@ -144,3 +144,69 @@ void over_get_player_spawn(map_t* map, int* x, int* y)
     /* Absolute worst case: no walkable tiles */
     *x = *y = 0;
 }
+
+
+void over_get_npc_spawn(map_t* map, int* x, int* y, int px, int py)
+{
+    if (!map || !x || !y) return;
+
+    const int MAX_ATTEMPTS = 5000;
+    const int MIN_DIST = 20;  /* NPC must be far from player */
+    const int MIN_DIST2 = MIN_DIST * MIN_DIST;
+
+    for (int i = 0; i < MAX_ATTEMPTS; i++)
+    {
+        int rx = rand() % MAP_WIDTH;
+        int ry = rand() % MAP_HEIGHT;
+
+        /* must be walkable ('.') */
+        if (!over_is_walkable(map, rx, ry))
+            continue;
+
+        /* must be far enough from player */
+        int dx = rx - px;
+        int dy = ry - py;
+        int dist2 = dx*dx + dy*dy;
+        if (dist2 < MIN_DIST2)
+            continue;
+
+        /* optional: avoid cramped 1-tile clearings among trees */
+        int open_adj = 0;
+        if (ry > 0              && over_is_walkable(map, rx, ry-1)) open_adj++;
+        if (ry < MAP_HEIGHT - 1 && over_is_walkable(map, rx, ry+1)) open_adj++;
+        if (rx > 0              && over_is_walkable(map, rx-1, ry)) open_adj++;
+        if (rx < MAP_WIDTH - 1  && over_is_walkable(map, rx+1, ry)) open_adj++;
+
+        if (open_adj < 2) continue;
+
+        *x = rx;
+        *y = ry;
+        return;
+    }
+
+    /* Fallback brute search: pick the furthest walkable tile */
+    int best_x = 0, best_y = 0;
+    int best_dist2 = -1;
+
+    for (int iy = 0; iy < MAP_HEIGHT; iy++)
+    for (int ix = 0; ix < MAP_WIDTH; ix++)
+        if (over_is_walkable(map, ix, iy)) {
+            int dx = ix - px;
+            int dy = iy - py;
+            int dist2 = dx*dx + dy*dy;
+            if (dist2 > best_dist2) {
+                best_dist2 = dist2;
+                best_x = ix;
+                best_y = iy;
+            }
+        }
+
+    if (best_dist2 >= 0) {
+        *x = best_x;
+        *y = best_y;
+        return;
+    }
+
+    /* absolute last resort */
+    *x = *y = 0;
+}

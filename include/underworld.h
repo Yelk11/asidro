@@ -19,5 +19,5 @@ typedef struct bsp_node {
 
 bsp_node* generate_underworld(map_t* map);
 void under_get_player_spawn(map_t* map, int* x, int* y);
-
+void under_get_npc_spawn(map_t* map, int* x, int* y, int px, int py);
 #endif

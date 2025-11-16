@@ -3,13 +3,8 @@
 
 #include "map.h"
 
-/* Generate an overworld using Perlin-style value noise.
- * The generator fills `map->map` with the following characters:
- *  - '.' dirt (dominant)
- *  - 'T' tree
- *  - 'o' rock
- */
 void generate_overworld(map_t *map);
 void over_get_player_spawn(map_t* map, int* x, int* y);
+void over_get_npc_spawn(map_t* map, int* x, int* y, int px, int py);
 
 #endif

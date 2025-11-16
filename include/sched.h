@@ -26,4 +26,6 @@ actor_t* sched_get_by_id(sched_node* root, int id);
 
 void sched_cycle_actions(sched_node *node);
 
+actor_t* sched_get_player(sched_node* root);
+
 #endif

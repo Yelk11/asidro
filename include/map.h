@@ -5,8 +5,8 @@
 
 #include "underworld.h"
 
-#define MAP_HEIGHT 100
-#define MAP_WIDTH 100
+#define MAP_HEIGHT 80
+#define MAP_WIDTH 80
 
 #define WALL '#'
 #define FLOOR '.'
@@ -32,4 +32,5 @@ void map_ascend(map_t* map);
 void map_descend(map_t* map);
 void map_get_player_spawn(map_t* map, int* x, int* y);
 bool map_is_walkable(map_t* map, int x, int y);
+void map_get_npc_spawn(map_t* map, int *x, int* y, int px, int py);
 #endif
