@@ -28,4 +28,6 @@ void sched_cycle_actions(sched_node *node);
 
 actor_t* sched_get_player(sched_node* root);
 
+actor_t* sched_get_actor_by_coords(sched_node* root, int x, int y);
+
 #endif

@@ -1,3 +1,5 @@
 /obj
 .vscode
 main
+debug_actor_list.txt
+debug_map.txt

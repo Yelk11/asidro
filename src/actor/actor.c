@@ -33,6 +33,28 @@ actor_t* make_actor(actor_type type, int x, int y, int speed, void (*act_fn)(act
     a->energy = 0;         // starts with no accumulated energy
     a->act = act_fn;       // behavior callback
     a->isAlive = true;
+    a->type = type;
+
+    /* Initialize health and damage based on type */
+    switch (type) {
+        case PLAYER:
+            a->max_health = 20;
+            a->damage = 3;
+            break;
+        case NPC:
+            a->max_health = 5;
+            a->damage = 1;
+            break;
+        case MONSTER:
+            a->max_health = 8;
+            a->damage = 2;
+            break;
+        default:
+            a->max_health = 5;
+            a->damage = 1;
+            break;
+    }
+    a->health = a->max_health;
 
     a->id = next_id();        // or use a monotonic counter
     a->data = data;
@@ -51,10 +73,17 @@ void player_act(actor_t* self)
 		case 'd': case 'l': dx += 1; break;
 		default: break;
 	}
-    if(map_is_walkable(game->map,self->x + dx, self->y + dy))
-    {
-        self->x += dx;
-        self->y += dy;
+
+    int new_x = self->x + dx;
+    int new_y = self->y + dy;
+
+    /* Check if there's an enemy at the destination */
+    actor_t* target = sched_get_actor_by_coords(game->action_list, new_x, new_y);
+    if (target && target != self && target->isAlive) {
+        actor_attack(self, target);
+    } else if (map_is_walkable(game->map, new_x, new_y)) {
+        self->x = new_x;
+        self->y = new_y;
     }
 }
 
@@ -75,4 +104,32 @@ void npc_act(actor_t* self)
 void place_actor(map_t* map, actor_t* actor)
 {
     
+}
+
+
+bool actor_attack(actor_t* attacker, actor_t* defender)
+{
+    if (!attacker || !defender || !defender->isAlive)
+        return false;
+
+    /* Simple attack: always hits, deals damage */
+    actor_take_damage(defender, attacker->damage);
+    return true;
+}
+
+void actor_take_damage(actor_t* actor, int damage)
+{
+    if (!actor || damage < 0)
+        return;
+
+    actor->health -= damage;
+    if (actor->health <= 0) {
+        actor->health = 0;
+        actor->isAlive = false;
+    }
+}
+
+bool actor_is_dead(actor_t* actor)
+{
+    return !actor || !actor->isAlive;
 }

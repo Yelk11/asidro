@@ -51,7 +51,7 @@ void update_screen(game_t *game)
     do
     {
         actor_t *a = cur->entity;
-
+        
         int ax = a->x - cam_x;
         int ay = a->y - cam_y;
 
@@ -66,6 +66,9 @@ void update_screen(game_t *game)
 
     if (draw_x >= 0 && draw_x < scr_w && draw_y >= 0 && draw_y < scr_h)
         mvaddch(draw_y, draw_x, player->ascii_char);
+
+    /* Display HUD: player health at top */
+    mvprintw(0, scr_w - 20, "HP: %d/%d", player->health, player->max_health);
 
     refresh();
 }

@@ -18,6 +18,9 @@ typedef struct actor_t{
     int energy;     // accumulated
     bool isAlive;
     actor_type type;
+    int health;     // current hp
+    int max_health; // max hp
+    int damage;     // attack damage
     void (*act)(struct actor_t *self);
     void* data;
 }actor_t;
@@ -33,6 +36,10 @@ actor_t* make_actor(actor_type type, int x, int y, int speed, void (*act_fn)(act
 void player_act(actor_t* e);
 void monster_act(actor_t* self);
 void npc_act(actor_t* self);
+/* Combat functions */
+bool actor_attack(actor_t* attacker, actor_t* defender);
+void actor_take_damage(actor_t* actor, int damage);
+bool actor_is_dead(actor_t* actor);
 
 
 #endif

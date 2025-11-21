@@ -44,18 +44,16 @@ void game_debug_dump(game_t* game)
     {
         for(int y = 0; y < MAP_HEIGHT; y++)
         {
+            
             fputc(game->map->map[y][x],fp_map);
         }
+        fputc('\n',fp_map);
     }
     fclose(fp_map);
     #include <stdio.h>
 
 
-    FILE* f = fopen("debug_actor_list", "w");
-    if (!f) {
-        perror("sched_dump_to_file");
-        return;
-    }
+    FILE* f = fopen("debug_actor_list.txt", "w");
 
     if (!game->action_list) {
         fprintf(f, "(empty scheduler list)\n");

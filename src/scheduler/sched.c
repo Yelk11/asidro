@@ -91,20 +91,37 @@ void sched_advance(sched_node *node)
 
 void sched_cycle_actions(sched_node *node)
 {
+    if (!node) return;
+    
     sched_node* head = node;
-    do{
-        node->entity->act(node->entity);
-        sched_advance(node);
-    }while(head != node);
+    sched_node* cur = head;
+    do {
+        sched_node* next_node = cur->next;
+        
+        /* If actor is alive, act; otherwise remove dead actor */
+        if (!actor_is_dead(cur->entity)) {
+            cur->entity->act(cur->entity);
+        } else {
+            head = sched_remove(head, cur->entity);
+            if (!head) break;  /* list is now empty */
+        }
+        
+        cur = next_node;
+    } while (cur != head && head != NULL);
 }
 
 actor_t* sched_get_by_id(sched_node* root, int id)
 {
-    while(root->entity->id != id)
-    {
-        sched_advance(root);
-    }
-    return root->entity;
+    if (!root) return NULL;
+    
+    sched_node* cur = root;
+    do {
+        if (cur->entity && cur->entity->id == id)
+            return cur->entity;
+        cur = cur->next;
+    } while (cur != root);
+    
+    return NULL;  /* not found */
 }
 
 actor_t* sched_get_player(sched_node* root)
@@ -123,4 +140,17 @@ actor_t* sched_get_player(sched_node* root)
     return NULL;  // no player in the list
 }
 
+actor_t* sched_get_actor_by_coords(sched_node* root, int x, int y)
+{
+    if (!root) return NULL;
 
+    sched_node* cur = root;
+
+    do {
+        if(cur->entity->x == x && cur->entity->y == y)
+            return cur->entity;
+        cur = cur->next;
+    } while (cur != root);
+
+    return NULL;  // no player in the list
+}
