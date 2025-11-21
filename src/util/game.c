@@ -29,15 +29,40 @@ void initializeGame(game_t* game)
 void updateGame(game_t* game)
 {
     curs_set(0);
-    nodelay(stdscr, true);
+    nodelay(stdscr, false);  /* Wait for player input */
     
     do{
+        /* Wait for player input */
         game->ch = getch();
         if(game->ch == 'p')
         {
             game_debug_dump(game);
+            continue;
         }
-        sched_cycle_actions(game->action_list);
+        
+        
+        actor_t* player = sched_get_player(game->action_list);
+        if (player && player->act) {
+            player->act(player);
+        }
+        
+
+        sched_node* cur = game->action_list;
+        if (cur) {
+            do {
+                sched_node* next = cur->next;
+                
+                if (cur->entity && cur->entity->type != PLAYER && cur->entity->act) {
+                    cur->entity->act(cur->entity);
+                }
+                
+                cur = next;
+            } while (cur != game->action_list);
+        }
+        
+        /* Remove dead actors */
+        game->action_list = sched_remove_dead(game->action_list);
+        
         update_screen(game);
 	}while(game->ch != 'q');
     

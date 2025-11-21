@@ -33,8 +33,17 @@ void draw_game(WINDOW* win, game_t* game)
     int scr_h, scr_w;
     getmaxyx(win, scr_h, scr_w);
     actor_t* p = sched_get_player(game->action_list);
-    int cam_x = p->x - scr_w / 2;
-    int cam_y = p->y - scr_h / 2;
+    int cam_x, cam_y;
+    if (p) {
+        cam_x = p->x - scr_w / 2;
+        cam_y = p->y - scr_h / 2;
+    } else {
+        /* no player: center camera on map
+         * (defensive: avoid dereferencing NULL player)
+         */
+        cam_x = MAP_WIDTH/2 - scr_w/2;
+        cam_y = MAP_HEIGHT/2 - scr_h/2;
+    }
 
     // Clamp camera to map bounds safely
     if (cam_x < 0) cam_x = 0;
@@ -63,8 +72,8 @@ void draw_game(WINDOW* win, game_t* game)
     /* Draw actors in main window */
     sched_node *cur = game->action_list;
     sched_node *head = cur;
-    int draw_x = p->x - cam_x;
-    int draw_y = p->y - cam_y;
+    int draw_x = (p ? (p->x - cam_x) : -1);
+    int draw_y = (p ? (p->y - cam_y) : -1);
 
     if (cur) {
         do {
@@ -79,8 +88,8 @@ void draw_game(WINDOW* win, game_t* game)
         } while (cur != head);
     }
 
-    /* Draw player */
-    if (draw_x >= 0 && draw_x < scr_w && draw_y >= 0 && draw_y < scr_h)
+    /* Draw player if present */
+    if (p && draw_x >= 0 && draw_x < scr_w && draw_y >= 0 && draw_y < scr_h)
         mvwaddch(win, draw_y, draw_x, p->ascii_char);
 
 }
@@ -90,32 +99,38 @@ void draw_player_stat(WINDOW* win, game_t* game)
     actor_t* p = sched_get_player(game->action_list);
     
     /* Use werase for faster redraw (doesn't cause flicker like wclear) */
-    werase(win);
+    if(p)
+    {
+        werase(win);
+        
+        mvwaddstr(win, 0, 0, "=== PLAYER STATUS ===");
+        
+        /* Health bar visualization */
+        int bar_width = 15;
+        int filled = (p->health * bar_width) / p->max_health;
+        if (filled > bar_width) filled = bar_width;
+        
+        mvwaddstr(win, 1, 0, "HP: [");
+        for (int i = 0; i < bar_width; i++) {
+            waddch(win, i < filled ? '#' : '-');
+        }
     
-    mvwaddstr(win, 0, 0, "=== PLAYER STATUS ===");
-    
-    /* Health bar visualization */
-    int bar_width = 15;
-    int filled = (p->health * bar_width) / p->max_health;
-    if (filled > bar_width) filled = bar_width;
-    
-    mvwaddstr(win, 1, 0, "HP: [");
-    for (int i = 0; i < bar_width; i++) {
-        waddch(win, i < filled ? '#' : '-');
+        mvwprintw(win, 1, 5 + bar_width + 1, "] %d/%d", p->health, p->max_health);
     }
-    mvwprintw(win, 1, 5 + bar_width + 1, "] %d/%d", p->health, p->max_health);
 }
 
 void draw_game_stat(WINDOW* win, game_t* game)
 {
     actor_t* p = sched_get_player(game->action_list);
-
-    werase(win);
-    mvwaddstr(win, 0, 1, "--- STATS ---");
-    mvwprintw(win, 1, 1, "HP: %d/%d", p->health, p->max_health);
-    mvwprintw(win, 2, 1, "DMG: %d", p->damage);
-    mvwprintw(win, 3, 1, "LV: 1");
-    mvwaddstr(win, 5, 1, "--- MESSAGES ---");
+    if(p)
+    {
+        werase(win);
+        mvwaddstr(win, 0, 1, "--- STATS ---");
+        mvwprintw(win, 1, 1, "HP: %d/%d", p->health, p->max_health);
+        mvwprintw(win, 2, 1, "DMG: %d", p->damage);
+        mvwprintw(win, 3, 1, "LV: 1");
+        mvwaddstr(win, 5, 1, "--- MESSAGES ---");
+    }
 }
 
 

@@ -24,10 +24,12 @@ void sched_advance(sched_node* node);
 
 actor_t* sched_get_by_id(sched_node* root, int id);
 
-void sched_cycle_actions(sched_node *node);
+sched_node* sched_cycle_actions(sched_node *node);
 
 actor_t* sched_get_player(sched_node* root);
 
 actor_t* sched_get_actor_by_coords(sched_node* root, int x, int y);
+
+sched_node* sched_remove_dead(sched_node* root);
 
 #endif

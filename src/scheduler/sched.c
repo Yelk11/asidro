@@ -89,25 +89,37 @@ void sched_advance(sched_node *node)
     node = node->next;
 }
 
-void sched_cycle_actions(sched_node *node)
+sched_node* sched_cycle_actions(sched_node *node)
 {
-    if (!node) return;
-    
+    if (!node) return NULL;
+
     sched_node* head = node;
     sched_node* cur = head;
     do {
         sched_node* next_node = cur->next;
-        
-        /* If actor is alive, act; otherwise remove dead actor */
+
+        /* If actor is alive, accumulate energy and act if threshold reached; otherwise remove dead actor */
         if (!actor_is_dead(cur->entity)) {
-            cur->entity->act(cur->entity);
+            actor_t* entity = cur->entity;
+            
+            /* Accumulate energy based on speed */
+            entity->energy += entity->speed;
+            
+            /* Actor gets a turn if energy >= 100 */
+            if (entity->energy >= 100) {
+                entity->energy -= 100;
+                if (entity->act)
+                    entity->act(entity);
+            }
         } else {
             head = sched_remove(head, cur->entity);
             if (!head) break;  /* list is now empty */
         }
-        
+
         cur = next_node;
     } while (cur != head && head != NULL);
+
+    return head;
 }
 
 actor_t* sched_get_by_id(sched_node* root, int id)
@@ -153,4 +165,23 @@ actor_t* sched_get_actor_by_coords(sched_node* root, int x, int y)
     } while (cur != root);
 
     return NULL;  // no player in the list
+}
+
+sched_node* sched_remove_dead(sched_node* root)
+{
+    if (!root) return NULL;
+
+    sched_node* cur = root;
+    sched_node* head = root;
+
+    do {
+        sched_node* next = cur->next;
+        if (actor_is_dead(cur->entity)) {
+            head = sched_remove(head, cur->entity);
+            if (!head) break;
+        }
+        cur = next;
+    } while (cur != head && head != NULL);
+
+    return head;
 }
