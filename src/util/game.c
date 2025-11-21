@@ -32,6 +32,17 @@ void updateGame(game_t* game)
     nodelay(stdscr, false);  /* Wait for player input */
     
     do{
+        /* Check if player is dead */
+        actor_t* player = sched_get_player(game->action_list);
+        if (!player || !player->isAlive) {
+            /* Draw game over screen and wait for Q */
+            update_screen(game);
+            do {
+                game->ch = getch();
+            } while(game->ch != 'q');
+            break;
+        }
+        
         /* Wait for player input */
         game->ch = getch();
         if(game->ch == 'p')
@@ -40,12 +51,9 @@ void updateGame(game_t* game)
             continue;
         }
         
-        
-        actor_t* player = sched_get_player(game->action_list);
         if (player && player->act) {
             player->act(player);
         }
-        
 
         sched_node* cur = game->action_list;
         if (cur) {

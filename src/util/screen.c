@@ -33,6 +33,11 @@ void draw_game(WINDOW* win, game_t* game)
     int scr_h, scr_w;
     getmaxyx(win, scr_h, scr_w);
     actor_t* p = sched_get_player(game->action_list);
+    if(!p || !p->isAlive)
+    {
+        draw_game_over_screen();
+        return;
+    }
     int cam_x, cam_y;
     if (p) {
         cam_x = p->x - scr_w / 2;
@@ -156,3 +161,10 @@ void update_screen(game_t *game)
 }
 
 
+void draw_game_over_screen()
+{
+    clear();
+    mvprintw(LINES / 2 - 1, (COLS - 10) / 2, "GAME OVER!");
+    mvprintw(LINES / 2 + 1, (COLS - 24) / 2, "Press Q to exit...");
+    refresh();
+}

@@ -6,6 +6,7 @@
 #include "game.h"
 #include "map.h"
 #include "ai.h"
+#include "screen.h"
 
 static int sign(int v) { return (v > 0) - (v < 0); }
 
