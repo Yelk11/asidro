@@ -2,6 +2,32 @@
 #include "ncurses.h"
 #include "map.h"
 
+/* Static windows - created once and reused */
+static WINDOW *game_win = NULL;
+static WINDOW *player_stat_win = NULL;
+static WINDOW *game_stat_win = NULL;
+
+void init_screen_windows(int scr_h, int scr_w)
+{
+    if (game_win) delwin(game_win);
+    if (player_stat_win) delwin(player_stat_win);
+    if (game_stat_win) delwin(game_stat_win);
+
+    int stat_win_w = 25;
+    int health_bar_h = 3;
+    int game_win_w = scr_w - stat_win_w;
+    int game_win_h = scr_h - health_bar_h;
+
+    player_stat_win = newwin(health_bar_h, scr_w, game_win_h, 0);
+    game_stat_win = newwin(scr_h - health_bar_h, stat_win_w, 0, game_win_w);
+    game_win = newwin(game_win_h, game_win_w, 0, 0);
+
+    /* Draw borders once */
+    box(game_win, 0, 0);
+    box(player_stat_win, 0, 0);
+    box(game_stat_win, 0, 0);
+}
+
 void draw_game(WINDOW* win, game_t* game)
 {
     int scr_h, scr_w;
@@ -61,12 +87,11 @@ void draw_game(WINDOW* win, game_t* game)
 
 void draw_player_stat(WINDOW* win, game_t* game)
 {
-    int scr_h, scr_w;
-    getmaxyx(win, scr_h, scr_w);
     actor_t* p = sched_get_player(game->action_list);
     
-    /* Clear window and draw status */
-    wclear(win);
+    /* Use werase for faster redraw (doesn't cause flicker like wclear) */
+    werase(win);
+    
     mvwaddstr(win, 0, 0, "=== PLAYER STATUS ===");
     
     /* Health bar visualization */
@@ -83,11 +108,9 @@ void draw_player_stat(WINDOW* win, game_t* game)
 
 void draw_game_stat(WINDOW* win, game_t* game)
 {
-    int scr_h, scr_w;
-    getmaxyx(win, scr_h, scr_w);
     actor_t* p = sched_get_player(game->action_list);
 
-    wclear(win);
+    werase(win);
     mvwaddstr(win, 0, 1, "--- STATS ---");
     mvwprintw(win, 1, 1, "HP: %d/%d", p->health, p->max_health);
     mvwprintw(win, 2, 1, "DMG: %d", p->damage);
@@ -98,35 +121,23 @@ void draw_game_stat(WINDOW* win, game_t* game)
 
 void update_screen(game_t *game)
 {
-    WINDOW *game_win;
-    WINDOW *player_stat_win;
-    WINDOW *game_stat_win;
     int scr_h, scr_w;
     getmaxyx(stdscr, scr_h, scr_w);
 
-
-    /* Window layout:
-     * - Top-left: game viewport (largest)
-     * - Right: stats/message window
-     * - Bottom: health/stat bar
-     */
-    int stat_win_w = 25;  /* right side width */
-    int health_bar_h = 3; /* bottom height */
-    int game_win_w = scr_w - stat_win_w;
-    int game_win_h = scr_h - health_bar_h;
-
-    player_stat_win = newwin(health_bar_h, scr_w, game_win_h, 0);
-    game_stat_win = newwin(scr_h - health_bar_h, stat_win_w, 0, game_win_w);
-    game_win = newwin(game_win_h, game_win_w, 0, 0);
-
+    /* Initialize windows on first call */
+    static int initialized = 0;
+    if (!initialized) {
+        init_screen_windows(scr_h, scr_w);
+        initialized = 1;
+    }
 
     draw_game(game_win, game);
     draw_player_stat(player_stat_win, game);
     draw_game_stat(game_stat_win, game);
-    wrefresh(game_stat_win);
-    wrefresh(player_stat_win);
+    
     wrefresh(game_win);
-
+    wrefresh(player_stat_win);
+    wrefresh(game_stat_win);
 }
 
 
