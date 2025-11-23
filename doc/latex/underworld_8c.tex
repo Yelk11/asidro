@@ -1,0 +1,49 @@
+\doxysection{src/map/underworld.c File Reference}
+\hypertarget{underworld_8c}{}\label{underworld_8c}\index{src/map/underworld.c@{src/map/underworld.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}map.\+h"{}}\newline
+{\ttfamily \#include "{}underworld.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{underworld_8c_a7af55a9777bada4cb8467c07ec6f4388}{free\+\_\+bsp}} (\mbox{\hyperlink{structbsp__node}{bsp\+\_\+node}} \texorpdfstring{$\ast$}{*}root)
+\item 
+\mbox{\hyperlink{structbsp__node}{bsp\+\_\+node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{underworld_8c_ac1ea05cf5a6d2e77eb4533308a28e427}{generate\+\_\+underworld}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map)
+\item 
+void \mbox{\hyperlink{underworld_8c_a44b9c187eec7eb6204334328d8d31409}{under\+\_\+get\+\_\+player\+\_\+spawn}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map, int \texorpdfstring{$\ast$}{*}x, int \texorpdfstring{$\ast$}{*}y)
+\item 
+void \mbox{\hyperlink{underworld_8c_a46cd8517e16cd1d249bb4d88f0255257}{under\+\_\+get\+\_\+npc\+\_\+spawn}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map, int \texorpdfstring{$\ast$}{*}x, int \texorpdfstring{$\ast$}{*}y, int px, int py)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{underworld_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{underworld_8c_a7af55a9777bada4cb8467c07ec6f4388}\index{underworld.c@{underworld.c}!free\_bsp@{free\_bsp}}
+\index{free\_bsp@{free\_bsp}!underworld.c@{underworld.c}}
+\doxysubsubsection{\texorpdfstring{free\_bsp()}{free\_bsp()}}
+{\footnotesize\ttfamily \label{underworld_8c_a7af55a9777bada4cb8467c07ec6f4388} 
+void free\+\_\+bsp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbsp__node}{bsp\+\_\+node}} \texorpdfstring{$\ast$}{*}}]{root}{}\end{DoxyParamCaption})}
+
+\Hypertarget{underworld_8c_ac1ea05cf5a6d2e77eb4533308a28e427}\index{underworld.c@{underworld.c}!generate\_underworld@{generate\_underworld}}
+\index{generate\_underworld@{generate\_underworld}!underworld.c@{underworld.c}}
+\doxysubsubsection{\texorpdfstring{generate\_underworld()}{generate\_underworld()}}
+{\footnotesize\ttfamily \label{underworld_8c_ac1ea05cf5a6d2e77eb4533308a28e427} 
+\mbox{\hyperlink{structbsp__node}{bsp\+\_\+node}} \texorpdfstring{$\ast$}{*} generate\+\_\+underworld (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{}\end{DoxyParamCaption})}
+
+\Hypertarget{underworld_8c_a46cd8517e16cd1d249bb4d88f0255257}\index{underworld.c@{underworld.c}!under\_get\_npc\_spawn@{under\_get\_npc\_spawn}}
+\index{under\_get\_npc\_spawn@{under\_get\_npc\_spawn}!underworld.c@{underworld.c}}
+\doxysubsubsection{\texorpdfstring{under\_get\_npc\_spawn()}{under\_get\_npc\_spawn()}}
+{\footnotesize\ttfamily \label{underworld_8c_a46cd8517e16cd1d249bb4d88f0255257} 
+void under\+\_\+get\+\_\+npc\+\_\+spawn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{y}{, }\item[{int}]{px}{, }\item[{int}]{py}{}\end{DoxyParamCaption})}
+
+\Hypertarget{underworld_8c_a44b9c187eec7eb6204334328d8d31409}\index{underworld.c@{underworld.c}!under\_get\_player\_spawn@{under\_get\_player\_spawn}}
+\index{under\_get\_player\_spawn@{under\_get\_player\_spawn}!underworld.c@{underworld.c}}
+\doxysubsubsection{\texorpdfstring{under\_get\_player\_spawn()}{under\_get\_player\_spawn()}}
+{\footnotesize\ttfamily \label{underworld_8c_a44b9c187eec7eb6204334328d8d31409} 
+void under\+\_\+get\+\_\+player\+\_\+spawn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{y}{}\end{DoxyParamCaption})}
+

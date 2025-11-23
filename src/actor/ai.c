@@ -1,16 +1,24 @@
+/**
+ * @file ai.c
+ * @brief Artificial Intelligence algorithms for NPC/monster behavior
+ * @author Asidro Team
+ * 
+ * Implements distance calculations, pathfinding, and movement algorithms
+ * for non-player characters and monsters.
+ */
+
 #include "ai.h"
-
-
-
-
-
-
-
 #include <stdlib.h>
 #include "map.h"
 #include "sched.h"
 #include "game.h"
 
+
+/**
+ * @brief calculates the distance to the player
+ * @param player the player
+ * @param actor the non player actor
+ */
 int distance_to_player(actor_t* player, actor_t* actor)
 {
 	if (!player || !actor) return -1;
@@ -20,6 +28,11 @@ int distance_to_player(actor_t* player, actor_t* actor)
 	return abs(dx) + abs(dy);
 }
 
+
+/**
+ * @brief algorythm for the actor to wander randomly
+ * @param actor the actor to walk randomly
+ */
 void wander_randomly(actor_t* actor)
 {
 	if (!actor) return;

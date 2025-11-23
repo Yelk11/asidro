@@ -1,0 +1,51 @@
+\doxysection{actor.\+h}
+\hypertarget{actor_8h_source}{}\label{actor_8h_source}\index{include/actor.h@{include/actor.h}}
+\mbox{\hyperlink{actor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ACTOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ACTOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \mbox{\hyperlink{actor_8h_a9e34d2d122b3d24e659eb59d9b42937bade5dc3e0dbd007d995ed3e37bde5ce7e}{PLAYER}},}
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{actor_8h_a9e34d2d122b3d24e659eb59d9b42937ba15e9b4a4961e692cf908fb32c482b629}{NPC}},}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{actor_8h_a9e34d2d122b3d24e659eb59d9b42937baf496eff98f9bb45646f2c88ea331998e}{MONSTER}}}
+\DoxyCodeLine{00010\ \}\mbox{\hyperlink{actor_8h_a9e34d2d122b3d24e659eb59d9b42937b}{actor\_type}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structactor__t}{actor\_t}}\{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structactor__t_aff5d0210cabfbcd26d845b43d3df4e2b}{id}};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structactor__t_a52e2b70276200b99994024ff6fdbd31a}{ascii\_char}};}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structactor__t_ab37194b1fee445e439e3d9391a6365d4}{x}},\ \mbox{\hyperlink{structactor__t_a7998ec55e2198bfeb7ece7a35412c25f}{y}};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structactor__t_ada42053f85c0cb81b739f6178b1eb9bb}{speed}};\ \ \ \ \ \ \textcolor{comment}{//\ higher\ =\ more\ turns}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structactor__t_ad72a481997a423621a56f6dde4a7a3c9}{energy}};\ \ \ \ \ \textcolor{comment}{//\ accumulated}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structactor__t_a5a93cd80a5cf5ed69e2c8e06776745f0}{isAlive}};}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{actor_8h_a9e34d2d122b3d24e659eb59d9b42937b}{actor\_type}}\ \mbox{\hyperlink{structactor__t_a39effc5be743a39abe6ddcb8d89e8786}{type}};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structactor__t_af5c77066d7af84e2fc08b574fef59aae}{health}};\ \ \ \ \ \textcolor{comment}{//\ current\ hp}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structactor__t_adf719bdf9ab029b60574255586421454}{max\_health}};\ \textcolor{comment}{//\ max\ hp}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structactor__t_a873840cc2c51a459254c384f36c2218f}{damage}};\ \ \ \ \ \textcolor{comment}{//\ attack\ damage}}
+\DoxyCodeLine{00024\ \ \ \ \ void\ (*\mbox{\hyperlink{structactor__t_a4da149d929e2853c647c172b093391a3}{act}})(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structactor__t}{actor\_t}}\ *self);}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{structactor__t_a2f0b28e30e229cb98aef461c375f69c3}{data}};}
+\DoxyCodeLine{00026\ \}\mbox{\hyperlink{structactor__t}{actor\_t}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{actor_8h_a99f26e6ee9fcd62f75203b5402df8098aba595d8bca8bc5e67c37c0a9d89becfa}{UP}},}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{actor_8h_a99f26e6ee9fcd62f75203b5402df8098a9b0b4a95b99523966e0e34ffdadac9da}{DOWN}},}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{actor_8h_a99f26e6ee9fcd62f75203b5402df8098aec8379af7490bb9eaaf579cf17876f38}{RIGHT}},}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{actor_8h_a99f26e6ee9fcd62f75203b5402df8098adb45120aafd37a973140edee24708065}{LEFT}}}
+\DoxyCodeLine{00033\ \}\mbox{\hyperlink{actor_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \mbox{\hyperlink{structactor__t}{actor\_t}}*\ \mbox{\hyperlink{actor_8h_adfea1c378729f0b6f518a03e05c31766}{make\_actor}}(\mbox{\hyperlink{actor_8h_a9e34d2d122b3d24e659eb59d9b42937b}{actor\_type}}\ \mbox{\hyperlink{structactor__t_a39effc5be743a39abe6ddcb8d89e8786}{type}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structactor__t_ab37194b1fee445e439e3d9391a6365d4}{x}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structactor__t_a7998ec55e2198bfeb7ece7a35412c25f}{y}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structactor__t_ada42053f85c0cb81b739f6178b1eb9bb}{speed}},\ \textcolor{keywordtype}{void}\ (*act\_fn)(\mbox{\hyperlink{structactor__t}{actor\_t}}*),\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{structactor__t_a2f0b28e30e229cb98aef461c375f69c3}{data}});}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{actor_8h_a5ed398d34ecfc494922e2c3af0fe5d01}{player\_act}}(\mbox{\hyperlink{structactor__t}{actor\_t}}*\ e);}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{actor_8h_a7dfb1884c37cfd92eac11dcdf0e3c86c}{monster\_act}}(\mbox{\hyperlink{structactor__t}{actor\_t}}*\ self);}
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{actor_8h_a2034ca94bb8a9459eeb9298087fec075}{npc\_act}}(\mbox{\hyperlink{structactor__t}{actor\_t}}*\ self);}
+\DoxyCodeLine{00039\ \textcolor{comment}{/*\ Combat\ functions\ */}}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{actor_8h_a6f49003fb8e4670da4479001f385ac50}{actor\_attack}}(\mbox{\hyperlink{structactor__t}{actor\_t}}*\ attacker,\ \mbox{\hyperlink{structactor__t}{actor\_t}}*\ defender);}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{actor_8h_a0c2b218f1c17af0a497144caa0a99ce5}{actor\_take\_damage}}(\mbox{\hyperlink{structactor__t}{actor\_t}}*\ actor,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structactor__t_a873840cc2c51a459254c384f36c2218f}{damage}});}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{actor_8h_a840278d9ae0eb8a969e69b567534c8e9}{actor\_is\_dead}}(\mbox{\hyperlink{structactor__t}{actor\_t}}*\ actor);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

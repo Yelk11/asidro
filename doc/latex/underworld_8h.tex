@@ -1,0 +1,95 @@
+\doxysection{include/underworld.h File Reference}
+\hypertarget{underworld_8h}{}\label{underworld_8h}\index{include/underworld.h@{include/underworld.h}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structbsp__node}{bsp\+\_\+node}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{underworld_8h_ac0b29726c0da49dc946d05a921deba5b}{MIN\+\_\+\+LEAF\+\_\+\+SIZE}}~12
+\item 
+\#define \mbox{\hyperlink{underworld_8h_a4ee3378b3013fb3e2643049ab995841e}{MAX\+\_\+\+LEAF\+\_\+\+SIZE}}~25
+\item 
+\#define \mbox{\hyperlink{underworld_8h_a648994e36faa3422e56be977c3616f5a}{MIN\+\_\+\+ROOM\+\_\+\+SIZE}}~4
+\item 
+\#define \mbox{\hyperlink{underworld_8h_a0e5ca28f3c9c071f621d975bb6d6be3a}{MAX\+\_\+\+ROOM\+\_\+\+SIZE}}~10
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct bsp\+\_\+node \mbox{\hyperlink{underworld_8h_a35d1125b68ea78627a47bac7d6008068}{bsp\+\_\+node}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structbsp__node}{bsp\+\_\+node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{underworld_8h_ac1ea05cf5a6d2e77eb4533308a28e427}{generate\+\_\+underworld}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map)
+\item 
+void \mbox{\hyperlink{underworld_8h_a44b9c187eec7eb6204334328d8d31409}{under\+\_\+get\+\_\+player\+\_\+spawn}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map, int \texorpdfstring{$\ast$}{*}x, int \texorpdfstring{$\ast$}{*}y)
+\item 
+void \mbox{\hyperlink{underworld_8h_a46cd8517e16cd1d249bb4d88f0255257}{under\+\_\+get\+\_\+npc\+\_\+spawn}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map, int \texorpdfstring{$\ast$}{*}x, int \texorpdfstring{$\ast$}{*}y, int px, int py)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{underworld_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{underworld_8h_a4ee3378b3013fb3e2643049ab995841e}\index{underworld.h@{underworld.h}!MAX\_LEAF\_SIZE@{MAX\_LEAF\_SIZE}}
+\index{MAX\_LEAF\_SIZE@{MAX\_LEAF\_SIZE}!underworld.h@{underworld.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_LEAF\_SIZE}{MAX\_LEAF\_SIZE}}
+{\footnotesize\ttfamily \label{underworld_8h_a4ee3378b3013fb3e2643049ab995841e} 
+\#define MAX\+\_\+\+LEAF\+\_\+\+SIZE~25}
+
+\Hypertarget{underworld_8h_a0e5ca28f3c9c071f621d975bb6d6be3a}\index{underworld.h@{underworld.h}!MAX\_ROOM\_SIZE@{MAX\_ROOM\_SIZE}}
+\index{MAX\_ROOM\_SIZE@{MAX\_ROOM\_SIZE}!underworld.h@{underworld.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_ROOM\_SIZE}{MAX\_ROOM\_SIZE}}
+{\footnotesize\ttfamily \label{underworld_8h_a0e5ca28f3c9c071f621d975bb6d6be3a} 
+\#define MAX\+\_\+\+ROOM\+\_\+\+SIZE~10}
+
+\Hypertarget{underworld_8h_ac0b29726c0da49dc946d05a921deba5b}\index{underworld.h@{underworld.h}!MIN\_LEAF\_SIZE@{MIN\_LEAF\_SIZE}}
+\index{MIN\_LEAF\_SIZE@{MIN\_LEAF\_SIZE}!underworld.h@{underworld.h}}
+\doxysubsubsection{\texorpdfstring{MIN\_LEAF\_SIZE}{MIN\_LEAF\_SIZE}}
+{\footnotesize\ttfamily \label{underworld_8h_ac0b29726c0da49dc946d05a921deba5b} 
+\#define MIN\+\_\+\+LEAF\+\_\+\+SIZE~12}
+
+\Hypertarget{underworld_8h_a648994e36faa3422e56be977c3616f5a}\index{underworld.h@{underworld.h}!MIN\_ROOM\_SIZE@{MIN\_ROOM\_SIZE}}
+\index{MIN\_ROOM\_SIZE@{MIN\_ROOM\_SIZE}!underworld.h@{underworld.h}}
+\doxysubsubsection{\texorpdfstring{MIN\_ROOM\_SIZE}{MIN\_ROOM\_SIZE}}
+{\footnotesize\ttfamily \label{underworld_8h_a648994e36faa3422e56be977c3616f5a} 
+\#define MIN\+\_\+\+ROOM\+\_\+\+SIZE~4}
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{underworld_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{underworld_8h_a35d1125b68ea78627a47bac7d6008068}\index{underworld.h@{underworld.h}!bsp\_node@{bsp\_node}}
+\index{bsp\_node@{bsp\_node}!underworld.h@{underworld.h}}
+\doxysubsubsection{\texorpdfstring{bsp\_node}{bsp\_node}}
+{\footnotesize\ttfamily \label{underworld_8h_a35d1125b68ea78627a47bac7d6008068} 
+typedef struct bsp\+\_\+node bsp\+\_\+node}
+
+
+
+\label{doc-func-members}
+\Hypertarget{underworld_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{underworld_8h_ac1ea05cf5a6d2e77eb4533308a28e427}\index{underworld.h@{underworld.h}!generate\_underworld@{generate\_underworld}}
+\index{generate\_underworld@{generate\_underworld}!underworld.h@{underworld.h}}
+\doxysubsubsection{\texorpdfstring{generate\_underworld()}{generate\_underworld()}}
+{\footnotesize\ttfamily \label{underworld_8h_ac1ea05cf5a6d2e77eb4533308a28e427} 
+\mbox{\hyperlink{structbsp__node}{bsp\+\_\+node}} \texorpdfstring{$\ast$}{*} generate\+\_\+underworld (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{}\end{DoxyParamCaption})}
+
+\Hypertarget{underworld_8h_a46cd8517e16cd1d249bb4d88f0255257}\index{underworld.h@{underworld.h}!under\_get\_npc\_spawn@{under\_get\_npc\_spawn}}
+\index{under\_get\_npc\_spawn@{under\_get\_npc\_spawn}!underworld.h@{underworld.h}}
+\doxysubsubsection{\texorpdfstring{under\_get\_npc\_spawn()}{under\_get\_npc\_spawn()}}
+{\footnotesize\ttfamily \label{underworld_8h_a46cd8517e16cd1d249bb4d88f0255257} 
+void under\+\_\+get\+\_\+npc\+\_\+spawn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{y}{, }\item[{int}]{px}{, }\item[{int}]{py}{}\end{DoxyParamCaption})}
+
+\Hypertarget{underworld_8h_a44b9c187eec7eb6204334328d8d31409}\index{underworld.h@{underworld.h}!under\_get\_player\_spawn@{under\_get\_player\_spawn}}
+\index{under\_get\_player\_spawn@{under\_get\_player\_spawn}!underworld.h@{underworld.h}}
+\doxysubsubsection{\texorpdfstring{under\_get\_player\_spawn()}{under\_get\_player\_spawn()}}
+{\footnotesize\ttfamily \label{underworld_8h_a44b9c187eec7eb6204334328d8d31409} 
+void under\+\_\+get\+\_\+player\+\_\+spawn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{y}{}\end{DoxyParamCaption})}
+

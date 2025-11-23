@@ -1,0 +1,29 @@
+\doxysection{underworld.\+h}
+\hypertarget{underworld_8h_source}{}\label{underworld_8h_source}\index{include/underworld.h@{include/underworld.h}}
+\mbox{\hyperlink{underworld_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ UNDERWORLD\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ UNDERWORLD\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmap__t}{map\_t}}\ \mbox{\hyperlink{structmap__t}{map\_t}};}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ MIN\_LEAF\_SIZE\ 12}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ MAX\_LEAF\_SIZE\ 25}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ MIN\_ROOM\_SIZE\ 4}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ MAX\_ROOM\_SIZE\ 10}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbsp__node}{bsp\_node}}\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structbsp__node_a0af991dc887c10199c63265d5159de8a}{x}},\ \mbox{\hyperlink{structbsp__node_abdde6d79190374de15bed8b6549915dc}{y}},\ \mbox{\hyperlink{structbsp__node_a8db388d7392b25a9bac73413f281c796}{w}},\ \mbox{\hyperlink{structbsp__node_abf063f2da7ffdf6b85bb519a5af73e4c}{h}};\ \ \ \ \ \textcolor{comment}{//\ region}}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structbsp__node_a52766a83870b49a625b030b3b0130c53}{room\_x}},\ \mbox{\hyperlink{structbsp__node_a31f11e46234070b19f29b8dc5470ee11}{room\_y}},\ \mbox{\hyperlink{structbsp__node_a68be62ba5ba51fade5530282ab46c5ed}{room\_w}},\ \mbox{\hyperlink{structbsp__node_a794942d3dfbdead66d0ebe4bfda92f8d}{room\_h}};}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbsp__node}{bsp\_node}}*\ \mbox{\hyperlink{structbsp__node_ae6c8470d1f28eff9114ceb68f9c3e9f8}{left}};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbsp__node}{bsp\_node}}*\ \mbox{\hyperlink{structbsp__node_a9204eb9b65d8b8264e1739a1ed989f13}{right}};}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structbsp__node_a432181c9eb0c05341bd93e485f9c5331}{has\_room}};}
+\DoxyCodeLine{00017\ \}\ \mbox{\hyperlink{structbsp__node}{bsp\_node}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \mbox{\hyperlink{structbsp__node}{bsp\_node}}*\ \mbox{\hyperlink{underworld_8h_ac1ea05cf5a6d2e77eb4533308a28e427}{generate\_underworld}}(\mbox{\hyperlink{structmap__t}{map\_t}}*\ map);}
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{underworld_8h_a44b9c187eec7eb6204334328d8d31409}{under\_get\_player\_spawn}}(\mbox{\hyperlink{structmap__t}{map\_t}}*\ map,\ \textcolor{keywordtype}{int}*\ \mbox{\hyperlink{structbsp__node_a0af991dc887c10199c63265d5159de8a}{x}},\ \textcolor{keywordtype}{int}*\ \mbox{\hyperlink{structbsp__node_abdde6d79190374de15bed8b6549915dc}{y}});}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{underworld_8h_a46cd8517e16cd1d249bb4d88f0255257}{under\_get\_npc\_spawn}}(\mbox{\hyperlink{structmap__t}{map\_t}}*\ map,\ \textcolor{keywordtype}{int}*\ \mbox{\hyperlink{structbsp__node_a0af991dc887c10199c63265d5159de8a}{x}},\ \textcolor{keywordtype}{int}*\ \mbox{\hyperlink{structbsp__node_abdde6d79190374de15bed8b6549915dc}{y}},\ \textcolor{keywordtype}{int}\ px,\ \textcolor{keywordtype}{int}\ py);}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

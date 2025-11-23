@@ -1,0 +1,114 @@
+\doxysection{src/map/map.c File Reference}
+\hypertarget{map_8c}{}\label{map_8c}\index{src/map/map.c@{src/map/map.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}map.\+h"{}}\newline
+{\ttfamily \#include "{}overworld.\+h"{}}\newline
+{\ttfamily \#include "{}underworld.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{map_8c_a36c4d28ddb2fd62d5d81d03d06eaead0}{map\+\_\+init}} (int seed)
+\item 
+void \mbox{\hyperlink{map_8c_aa43978fc2bfe395e84a3787d8e3cd44c}{map\+\_\+gen}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map)
+\item 
+void \mbox{\hyperlink{map_8c_a4499aa5f3421e737c465052d8fe5f7f4}{map\+\_\+ascend}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map)
+\item 
+void \mbox{\hyperlink{map_8c_a0322dfe3b9e1b1cbed314752ab9a1ea9}{map\+\_\+descend}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map)
+\item 
+void \mbox{\hyperlink{map_8c_a93e0aa99793d35ae3247e14decc0a3b6}{free\+Map}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map)
+\item 
+int \mbox{\hyperlink{map_8c_a1a1a802dc14ed614830ef8ee747ac8b3}{in\+\_\+bounds}} (int x, int y)
+\item 
+void \mbox{\hyperlink{map_8c_a935cf875bf46586a39eebaab0d1b1eb3}{set\+\_\+tile}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map, int x, int y, char c)
+\item 
+char \mbox{\hyperlink{map_8c_a0ad4191b4ed9e84261a57d4f670dc2e9}{get\+\_\+tile}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map, int x, int y)
+\item 
+void \mbox{\hyperlink{map_8c_a19d43a7ccc471793718fabbedd183152}{fill\+\_\+map}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map, char c)
+\item 
+void \mbox{\hyperlink{map_8c_a74504c6995c8e1f35247cf8af368f2c2}{map\+\_\+get\+\_\+player\+\_\+spawn}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map, int \texorpdfstring{$\ast$}{*}x, int \texorpdfstring{$\ast$}{*}y)
+\item 
+bool \mbox{\hyperlink{map_8c_a522727bfb4e97debb966a75ae53642ea}{map\+\_\+is\+\_\+walkable}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map, int x, int y)
+\item 
+void \mbox{\hyperlink{map_8c_a4a7d53b70aff96d42353556ec58be251}{map\+\_\+get\+\_\+npc\+\_\+spawn}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map, int \texorpdfstring{$\ast$}{*}x, int \texorpdfstring{$\ast$}{*}y, int px, int py)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{map_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{map_8c_a19d43a7ccc471793718fabbedd183152}\index{map.c@{map.c}!fill\_map@{fill\_map}}
+\index{fill\_map@{fill\_map}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{fill\_map()}{fill\_map()}}
+{\footnotesize\ttfamily \label{map_8c_a19d43a7ccc471793718fabbedd183152} 
+void fill\+\_\+map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{char}]{c}{}\end{DoxyParamCaption})}
+
+\Hypertarget{map_8c_a93e0aa99793d35ae3247e14decc0a3b6}\index{map.c@{map.c}!freeMap@{freeMap}}
+\index{freeMap@{freeMap}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{freeMap()}{freeMap()}}
+{\footnotesize\ttfamily \label{map_8c_a93e0aa99793d35ae3247e14decc0a3b6} 
+void free\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{}\end{DoxyParamCaption})}
+
+\Hypertarget{map_8c_a0ad4191b4ed9e84261a57d4f670dc2e9}\index{map.c@{map.c}!get\_tile@{get\_tile}}
+\index{get\_tile@{get\_tile}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{get\_tile()}{get\_tile()}}
+{\footnotesize\ttfamily \label{map_8c_a0ad4191b4ed9e84261a57d4f670dc2e9} 
+char get\+\_\+tile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+
+\Hypertarget{map_8c_a1a1a802dc14ed614830ef8ee747ac8b3}\index{map.c@{map.c}!in\_bounds@{in\_bounds}}
+\index{in\_bounds@{in\_bounds}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{in\_bounds()}{in\_bounds()}}
+{\footnotesize\ttfamily \label{map_8c_a1a1a802dc14ed614830ef8ee747ac8b3} 
+int in\+\_\+bounds (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+
+\Hypertarget{map_8c_a4499aa5f3421e737c465052d8fe5f7f4}\index{map.c@{map.c}!map\_ascend@{map\_ascend}}
+\index{map\_ascend@{map\_ascend}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{map\_ascend()}{map\_ascend()}}
+{\footnotesize\ttfamily \label{map_8c_a4499aa5f3421e737c465052d8fe5f7f4} 
+void map\+\_\+ascend (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{}\end{DoxyParamCaption})}
+
+\Hypertarget{map_8c_a0322dfe3b9e1b1cbed314752ab9a1ea9}\index{map.c@{map.c}!map\_descend@{map\_descend}}
+\index{map\_descend@{map\_descend}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{map\_descend()}{map\_descend()}}
+{\footnotesize\ttfamily \label{map_8c_a0322dfe3b9e1b1cbed314752ab9a1ea9} 
+void map\+\_\+descend (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{}\end{DoxyParamCaption})}
+
+\Hypertarget{map_8c_aa43978fc2bfe395e84a3787d8e3cd44c}\index{map.c@{map.c}!map\_gen@{map\_gen}}
+\index{map\_gen@{map\_gen}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{map\_gen()}{map\_gen()}}
+{\footnotesize\ttfamily \label{map_8c_aa43978fc2bfe395e84a3787d8e3cd44c} 
+void map\+\_\+gen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{}\end{DoxyParamCaption})}
+
+\Hypertarget{map_8c_a4a7d53b70aff96d42353556ec58be251}\index{map.c@{map.c}!map\_get\_npc\_spawn@{map\_get\_npc\_spawn}}
+\index{map\_get\_npc\_spawn@{map\_get\_npc\_spawn}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{map\_get\_npc\_spawn()}{map\_get\_npc\_spawn()}}
+{\footnotesize\ttfamily \label{map_8c_a4a7d53b70aff96d42353556ec58be251} 
+void map\+\_\+get\+\_\+npc\+\_\+spawn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{y}{, }\item[{int}]{px}{, }\item[{int}]{py}{}\end{DoxyParamCaption})}
+
+\Hypertarget{map_8c_a74504c6995c8e1f35247cf8af368f2c2}\index{map.c@{map.c}!map\_get\_player\_spawn@{map\_get\_player\_spawn}}
+\index{map\_get\_player\_spawn@{map\_get\_player\_spawn}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{map\_get\_player\_spawn()}{map\_get\_player\_spawn()}}
+{\footnotesize\ttfamily \label{map_8c_a74504c6995c8e1f35247cf8af368f2c2} 
+void map\+\_\+get\+\_\+player\+\_\+spawn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{y}{}\end{DoxyParamCaption})}
+
+\Hypertarget{map_8c_a36c4d28ddb2fd62d5d81d03d06eaead0}\index{map.c@{map.c}!map\_init@{map\_init}}
+\index{map\_init@{map\_init}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{map\_init()}{map\_init()}}
+{\footnotesize\ttfamily \label{map_8c_a36c4d28ddb2fd62d5d81d03d06eaead0} 
+\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*} map\+\_\+init (\begin{DoxyParamCaption}\item[{int}]{seed}{}\end{DoxyParamCaption})}
+
+\Hypertarget{map_8c_a522727bfb4e97debb966a75ae53642ea}\index{map.c@{map.c}!map\_is\_walkable@{map\_is\_walkable}}
+\index{map\_is\_walkable@{map\_is\_walkable}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{map\_is\_walkable()}{map\_is\_walkable()}}
+{\footnotesize\ttfamily \label{map_8c_a522727bfb4e97debb966a75ae53642ea} 
+bool map\+\_\+is\+\_\+walkable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+
+\Hypertarget{map_8c_a935cf875bf46586a39eebaab0d1b1eb3}\index{map.c@{map.c}!set\_tile@{set\_tile}}
+\index{set\_tile@{set\_tile}!map.c@{map.c}}
+\doxysubsubsection{\texorpdfstring{set\_tile()}{set\_tile()}}
+{\footnotesize\ttfamily \label{map_8c_a935cf875bf46586a39eebaab0d1b1eb3} 
+void set\+\_\+tile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{char}]{c}{}\end{DoxyParamCaption})}
+

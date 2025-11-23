@@ -165,6 +165,6 @@ void draw_game_over_screen()
 {
     clear();
     mvprintw(LINES / 2 - 1, (COLS - 10) / 2, "GAME OVER!");
-    mvprintw(LINES / 2 + 1, (COLS - 24) / 2, "Press Q to exit...");
+    mvprintw(LINES / 2 + 1, (COLS - 18) / 2, "Press Q to exit...");
     refresh();
 }

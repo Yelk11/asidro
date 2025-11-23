@@ -1,0 +1,38 @@
+\doxysection{item.\+h}
+\hypertarget{item_8h_source}{}\label{item_8h_source}\index{include/item.h@{include/item.h}}
+\mbox{\hyperlink{item_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ITEM\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ITEM\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structitem__t}{item\_t}}\{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structitem__t_adcb503acc12b4aa4232550346d1775d9}{id}};}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structitem__t_a73822fac150a23eaeacf0508e3e55b63}{ascii\_char}};}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structitem__t_ae1eaa397971ab8218f379608d32030c9}{damage}};}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structitem__t_a80d7bdd4a5a250e5145c323f42227f13}{hp}};}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structitem__t_a7b474b39ce204d64ea0c06255b46404d}{x}},\mbox{\hyperlink{structitem__t_a98ba8e4a10474febc244eeeb2912af04}{y}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ void\ (*\mbox{\hyperlink{structitem__t_aa4faf47db7c9c8e784bccd5642b2db17}{act}})(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structitem__t}{item\_t}}\ *self);}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{structitem__t_a6a04df9edd40dc8198534003fa24a37a}{data}};}
+\DoxyCodeLine{00015\ \}\mbox{\hyperlink{structitem__t}{item\_t}};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{item_8h_a2679318a14061852e50df3c6e4e42f62aabb6de3c5dc7e2f70051d23bb1e5e613}{WEAPON}},}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{item_8h_a2679318a14061852e50df3c6e4e42f62ae4915fac45f39bac2931876b337f41e3}{ARMOUR}},}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{item_8h_a2679318a14061852e50df3c6e4e42f62ae19452a763ea5148b06bf3eba8d08ef6}{TOOL}},}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{item_8h_a2679318a14061852e50df3c6e4e42f62a23f8f5e62324af5f4d8f899cee8fb70d}{MATERIAL}}}
+\DoxyCodeLine{00023\ \}\mbox{\hyperlink{item_8h_a2679318a14061852e50df3c6e4e42f62}{item\_type}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \mbox{\hyperlink{structitem__t}{item\_t}}*\ \mbox{\hyperlink{item_8h_a265df89ded513ff40c7e3452e5e36498}{make\_item}}(\textcolor{keywordtype}{char}\ \mbox{\hyperlink{structitem__t_a73822fac150a23eaeacf0508e3e55b63}{ascii\_char}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structitem__t_a7b474b39ce204d64ea0c06255b46404d}{x}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structitem__t_a98ba8e4a10474febc244eeeb2912af04}{y}},\ \textcolor{keywordtype}{int}\ speed,\ \textcolor{keywordtype}{void}\ (*act\_fn)(\mbox{\hyperlink{structitem__t}{item\_t}}*),\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{structitem__t_a6a04df9edd40dc8198534003fa24a37a}{data}});}
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{item_8h_a7e1f43c60fa3086d1607385edc51e4aa}{weapon\_act}}(\mbox{\hyperlink{structitem__t}{item\_t}}*\ e);}
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{item_8h_ac24c480db350f283b0f6201508363192}{armour\_act}}(\mbox{\hyperlink{structitem__t}{item\_t}}*\ self);}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{item_8h_a3fd4705c9fe012ec6fe9e796f47849ac}{tool\_act}}(\mbox{\hyperlink{structitem__t}{item\_t}}*\ self);}
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{item_8h_a84c74e8947e1d5e7dc24facc3523b683}{material\_act}}(\mbox{\hyperlink{structitem__t}{item\_t}}*\ self);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

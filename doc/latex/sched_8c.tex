@@ -1,0 +1,102 @@
+\doxysection{src/scheduler/sched.c File Reference}
+\hypertarget{sched_8c}{}\label{sched_8c}\index{src/scheduler/sched.c@{src/scheduler/sched.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}sched.\+h"{}}\newline
+{\ttfamily \#include "{}actor.\+h"{}}\newline
+{\ttfamily \#include "{}game.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sched_8c_a93c80d4f764696132685d892db9f1417}{sched\+\_\+init}} (\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}actor)
+\item 
+\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sched_8c_a7526912d76dc7c0455825881daabf678}{sched\+\_\+add}} (\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}entity)
+\item 
+\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sched_8c_a22bfcf98e49c9dd7fbfa3d5c5eb6a40f}{sched\+\_\+remove}} (\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}entity)
+\item 
+\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sched_8c_ac4202191de62ac7b95e30dcf447bca75}{sched\+\_\+current}} (\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}node)
+\item 
+\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sched_8c_afc9784f6a020d68baa528ab7ad40c01c}{sched\+\_\+peek}} (\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}node, int num)
+\item 
+void \mbox{\hyperlink{sched_8c_a88cb97315f6387edfa358092fd178ae7}{sched\+\_\+advance}} (\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}node)
+\item 
+\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sched_8c_a709beb9d131540bea6cbd4a5252e7bca}{sched\+\_\+cycle\+\_\+actions}} (\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}node)
+\item 
+\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sched_8c_a7dc6428114980e2581fe76d3e7094c15}{sched\+\_\+get\+\_\+by\+\_\+id}} (\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}root, int id)
+\item 
+\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sched_8c_a29c8e14e590ca73b33e89c4e1203c49c}{sched\+\_\+get\+\_\+player}} (\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}root)
+\item 
+\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sched_8c_a8d5829a158b2b3e245b3f26256789062}{sched\+\_\+get\+\_\+actor\+\_\+by\+\_\+coords}} (\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}root, int x, int y)
+\item 
+\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sched_8c_a51d5e259610a75e072e846922c7df63b}{sched\+\_\+remove\+\_\+dead}} (\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}root)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{sched_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{sched_8c_a7526912d76dc7c0455825881daabf678}\index{sched.c@{sched.c}!sched\_add@{sched\_add}}
+\index{sched\_add@{sched\_add}!sched.c@{sched.c}}
+\doxysubsubsection{\texorpdfstring{sched\_add()}{sched\_add()}}
+{\footnotesize\ttfamily \label{sched_8c_a7526912d76dc7c0455825881daabf678} 
+\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*} sched\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{entity}{}\end{DoxyParamCaption})}
+
+\Hypertarget{sched_8c_a88cb97315f6387edfa358092fd178ae7}\index{sched.c@{sched.c}!sched\_advance@{sched\_advance}}
+\index{sched\_advance@{sched\_advance}!sched.c@{sched.c}}
+\doxysubsubsection{\texorpdfstring{sched\_advance()}{sched\_advance()}}
+{\footnotesize\ttfamily \label{sched_8c_a88cb97315f6387edfa358092fd178ae7} 
+void sched\+\_\+advance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+\Hypertarget{sched_8c_ac4202191de62ac7b95e30dcf447bca75}\index{sched.c@{sched.c}!sched\_current@{sched\_current}}
+\index{sched\_current@{sched\_current}!sched.c@{sched.c}}
+\doxysubsubsection{\texorpdfstring{sched\_current()}{sched\_current()}}
+{\footnotesize\ttfamily \label{sched_8c_ac4202191de62ac7b95e30dcf447bca75} 
+\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*} sched\+\_\+current (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+\Hypertarget{sched_8c_a709beb9d131540bea6cbd4a5252e7bca}\index{sched.c@{sched.c}!sched\_cycle\_actions@{sched\_cycle\_actions}}
+\index{sched\_cycle\_actions@{sched\_cycle\_actions}!sched.c@{sched.c}}
+\doxysubsubsection{\texorpdfstring{sched\_cycle\_actions()}{sched\_cycle\_actions()}}
+{\footnotesize\ttfamily \label{sched_8c_a709beb9d131540bea6cbd4a5252e7bca} 
+\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*} sched\+\_\+cycle\+\_\+actions (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+\Hypertarget{sched_8c_a8d5829a158b2b3e245b3f26256789062}\index{sched.c@{sched.c}!sched\_get\_actor\_by\_coords@{sched\_get\_actor\_by\_coords}}
+\index{sched\_get\_actor\_by\_coords@{sched\_get\_actor\_by\_coords}!sched.c@{sched.c}}
+\doxysubsubsection{\texorpdfstring{sched\_get\_actor\_by\_coords()}{sched\_get\_actor\_by\_coords()}}
+{\footnotesize\ttfamily \label{sched_8c_a8d5829a158b2b3e245b3f26256789062} 
+\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*} sched\+\_\+get\+\_\+actor\+\_\+by\+\_\+coords (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}}]{root}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+
+\Hypertarget{sched_8c_a7dc6428114980e2581fe76d3e7094c15}\index{sched.c@{sched.c}!sched\_get\_by\_id@{sched\_get\_by\_id}}
+\index{sched\_get\_by\_id@{sched\_get\_by\_id}!sched.c@{sched.c}}
+\doxysubsubsection{\texorpdfstring{sched\_get\_by\_id()}{sched\_get\_by\_id()}}
+{\footnotesize\ttfamily \label{sched_8c_a7dc6428114980e2581fe76d3e7094c15} 
+\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*} sched\+\_\+get\+\_\+by\+\_\+id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}}]{root}{, }\item[{int}]{id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{sched_8c_a29c8e14e590ca73b33e89c4e1203c49c}\index{sched.c@{sched.c}!sched\_get\_player@{sched\_get\_player}}
+\index{sched\_get\_player@{sched\_get\_player}!sched.c@{sched.c}}
+\doxysubsubsection{\texorpdfstring{sched\_get\_player()}{sched\_get\_player()}}
+{\footnotesize\ttfamily \label{sched_8c_a29c8e14e590ca73b33e89c4e1203c49c} 
+\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*} sched\+\_\+get\+\_\+player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}}]{root}{}\end{DoxyParamCaption})}
+
+\Hypertarget{sched_8c_a93c80d4f764696132685d892db9f1417}\index{sched.c@{sched.c}!sched\_init@{sched\_init}}
+\index{sched\_init@{sched\_init}!sched.c@{sched.c}}
+\doxysubsubsection{\texorpdfstring{sched\_init()}{sched\_init()}}
+{\footnotesize\ttfamily \label{sched_8c_a93c80d4f764696132685d892db9f1417} 
+\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*} sched\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{actor}{}\end{DoxyParamCaption})}
+
+\Hypertarget{sched_8c_afc9784f6a020d68baa528ab7ad40c01c}\index{sched.c@{sched.c}!sched\_peek@{sched\_peek}}
+\index{sched\_peek@{sched\_peek}!sched.c@{sched.c}}
+\doxysubsubsection{\texorpdfstring{sched\_peek()}{sched\_peek()}}
+{\footnotesize\ttfamily \label{sched_8c_afc9784f6a020d68baa528ab7ad40c01c} 
+\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*} sched\+\_\+peek (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{int}]{num}{}\end{DoxyParamCaption})}
+
+\Hypertarget{sched_8c_a22bfcf98e49c9dd7fbfa3d5c5eb6a40f}\index{sched.c@{sched.c}!sched\_remove@{sched\_remove}}
+\index{sched\_remove@{sched\_remove}!sched.c@{sched.c}}
+\doxysubsubsection{\texorpdfstring{sched\_remove()}{sched\_remove()}}
+{\footnotesize\ttfamily \label{sched_8c_a22bfcf98e49c9dd7fbfa3d5c5eb6a40f} 
+\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*} sched\+\_\+remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{entity}{}\end{DoxyParamCaption})}
+
+\Hypertarget{sched_8c_a51d5e259610a75e072e846922c7df63b}\index{sched.c@{sched.c}!sched\_remove\_dead@{sched\_remove\_dead}}
+\index{sched\_remove\_dead@{sched\_remove\_dead}!sched.c@{sched.c}}
+\doxysubsubsection{\texorpdfstring{sched\_remove\_dead()}{sched\_remove\_dead()}}
+{\footnotesize\ttfamily \label{sched_8c_a51d5e259610a75e072e846922c7df63b} 
+\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*} sched\+\_\+remove\+\_\+dead (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsched__node}{sched\+\_\+node}} \texorpdfstring{$\ast$}{*}}]{root}{}\end{DoxyParamCaption})}
+

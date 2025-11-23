@@ -1,0 +1,61 @@
+\doxysection{src/util/screen.c File Reference}
+\hypertarget{screen_8c}{}\label{screen_8c}\index{src/util/screen.c@{src/util/screen.c}}
+{\ttfamily \#include "{}screen.\+h"{}}\newline
+{\ttfamily \#include "{}ncurses.\+h"{}}\newline
+{\ttfamily \#include "{}map.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{screen_8c_a2d4a0267332c367137f3d1e4c7741bdb}{init\+\_\+screen\+\_\+windows}} (int scr\+\_\+h, int scr\+\_\+w)
+\item 
+void \mbox{\hyperlink{screen_8c_a6e9b2b784edd2a60208dc00821adf1b4}{draw\+\_\+game}} (WINDOW \texorpdfstring{$\ast$}{*}win, \mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{game_8c_a27113921347a82199b52e4f2ee16985c}{game}})
+\item 
+void \mbox{\hyperlink{screen_8c_a9a7d7e9f5083754d4c841851574c2e4f}{draw\+\_\+player\+\_\+stat}} (WINDOW \texorpdfstring{$\ast$}{*}win, \mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{game_8c_a27113921347a82199b52e4f2ee16985c}{game}})
+\item 
+void \mbox{\hyperlink{screen_8c_acc32b5300f95b7e03fcfa7f8b87b70e0}{draw\+\_\+game\+\_\+stat}} (WINDOW \texorpdfstring{$\ast$}{*}win, \mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{game_8c_a27113921347a82199b52e4f2ee16985c}{game}})
+\item 
+void \mbox{\hyperlink{screen_8c_a7c424ab7f3620f519069ab8896ccc899}{update\+\_\+screen}} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{game_8c_a27113921347a82199b52e4f2ee16985c}{game}})
+\item 
+void \mbox{\hyperlink{screen_8c_ab27aba30289ff89f3ecbe6f1ec4291cb}{draw\+\_\+game\+\_\+over\+\_\+screen}} ()
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{screen_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{screen_8c_a6e9b2b784edd2a60208dc00821adf1b4}\index{screen.c@{screen.c}!draw\_game@{draw\_game}}
+\index{draw\_game@{draw\_game}!screen.c@{screen.c}}
+\doxysubsubsection{\texorpdfstring{draw\_game()}{draw\_game()}}
+{\footnotesize\ttfamily \label{screen_8c_a6e9b2b784edd2a60208dc00821adf1b4} 
+void draw\+\_\+game (\begin{DoxyParamCaption}\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{win}{, }\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+\Hypertarget{screen_8c_ab27aba30289ff89f3ecbe6f1ec4291cb}\index{screen.c@{screen.c}!draw\_game\_over\_screen@{draw\_game\_over\_screen}}
+\index{draw\_game\_over\_screen@{draw\_game\_over\_screen}!screen.c@{screen.c}}
+\doxysubsubsection{\texorpdfstring{draw\_game\_over\_screen()}{draw\_game\_over\_screen()}}
+{\footnotesize\ttfamily \label{screen_8c_ab27aba30289ff89f3ecbe6f1ec4291cb} 
+void draw\+\_\+game\+\_\+over\+\_\+screen (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{screen_8c_acc32b5300f95b7e03fcfa7f8b87b70e0}\index{screen.c@{screen.c}!draw\_game\_stat@{draw\_game\_stat}}
+\index{draw\_game\_stat@{draw\_game\_stat}!screen.c@{screen.c}}
+\doxysubsubsection{\texorpdfstring{draw\_game\_stat()}{draw\_game\_stat()}}
+{\footnotesize\ttfamily \label{screen_8c_acc32b5300f95b7e03fcfa7f8b87b70e0} 
+void draw\+\_\+game\+\_\+stat (\begin{DoxyParamCaption}\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{win}{, }\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+\Hypertarget{screen_8c_a9a7d7e9f5083754d4c841851574c2e4f}\index{screen.c@{screen.c}!draw\_player\_stat@{draw\_player\_stat}}
+\index{draw\_player\_stat@{draw\_player\_stat}!screen.c@{screen.c}}
+\doxysubsubsection{\texorpdfstring{draw\_player\_stat()}{draw\_player\_stat()}}
+{\footnotesize\ttfamily \label{screen_8c_a9a7d7e9f5083754d4c841851574c2e4f} 
+void draw\+\_\+player\+\_\+stat (\begin{DoxyParamCaption}\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{win}{, }\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+\Hypertarget{screen_8c_a2d4a0267332c367137f3d1e4c7741bdb}\index{screen.c@{screen.c}!init\_screen\_windows@{init\_screen\_windows}}
+\index{init\_screen\_windows@{init\_screen\_windows}!screen.c@{screen.c}}
+\doxysubsubsection{\texorpdfstring{init\_screen\_windows()}{init\_screen\_windows()}}
+{\footnotesize\ttfamily \label{screen_8c_a2d4a0267332c367137f3d1e4c7741bdb} 
+void init\+\_\+screen\+\_\+windows (\begin{DoxyParamCaption}\item[{int}]{scr\+\_\+h}{, }\item[{int}]{scr\+\_\+w}{}\end{DoxyParamCaption})}
+
+\Hypertarget{screen_8c_a7c424ab7f3620f519069ab8896ccc899}\index{screen.c@{screen.c}!update\_screen@{update\_screen}}
+\index{update\_screen@{update\_screen}!screen.c@{screen.c}}
+\doxysubsubsection{\texorpdfstring{update\_screen()}{update\_screen()}}
+{\footnotesize\ttfamily \label{screen_8c_a7c424ab7f3620f519069ab8896ccc899} 
+void update\+\_\+screen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+

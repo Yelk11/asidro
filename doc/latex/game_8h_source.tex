@@ -1,0 +1,35 @@
+\doxysection{game.\+h}
+\hypertarget{game_8h_source}{}\label{game_8h_source}\index{include/game.h@{include/game.h}}
+\mbox{\hyperlink{game_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ This\ file\ defines\ the\ game\_t\ structure\ and\ function\ prototypes}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ for\ game\ management.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ GAME\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ GAME\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{map_8h}{map.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{actor_8h}{actor.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sched_8h}{sched.h}}"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbsp__node}{bsp\_node}}\ \mbox{\hyperlink{structbsp__node}{bsp\_node}};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgame__t}{game\_t}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{structmap__t}{map\_t}}\ *\mbox{\hyperlink{structgame__t_ad5255bdce852094280b8d82f94b0adba}{map}};}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{structsched__node}{sched\_node}}*\ \mbox{\hyperlink{structgame__t_a2da84dca84c1c4f04c65937d6ce1c47d}{action\_list}};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structgame__t_ac03fd002140163faee4f22c4c59b0425}{ch}};}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{game_8h_a35d1125b68ea78627a47bac7d6008068}{bsp\_node}}*\ \mbox{\hyperlink{structgame__t_ad2b119e903e506f6185e0256f3843c01}{root}};}
+\DoxyCodeLine{00019\ \}\ \mbox{\hyperlink{structgame__t}{game\_t}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game_8h_a7e453e7ad9e79adfce0dabaa25699285}{initializeGame}}(\mbox{\hyperlink{structgame__t}{game\_t}}*\ \mbox{\hyperlink{game_8c_a27113921347a82199b52e4f2ee16985c}{game}});}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game_8h_aa26cbd2cf166d106811420ee8d85d892}{updateGame}}(\mbox{\hyperlink{structgame__t}{game\_t}}*\ \mbox{\hyperlink{game_8c_a27113921347a82199b52e4f2ee16985c}{game}});}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game_8h_adfe74c444bc71ee9dac3831f0a825ab0}{freeGame}}(\mbox{\hyperlink{structgame__t}{game\_t}}*\ \mbox{\hyperlink{game_8c_a27113921347a82199b52e4f2ee16985c}{game}});}
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game_8h_a27113921347a82199b52e4f2ee16985c}{game}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{game_8h_a1b489d5887a657a425e96d51c298819a}{valid\_spawn\_tile}}(\mbox{\hyperlink{structmap__t}{map\_t}}*\ map,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{game_8h_a21095b227ce0b1eaf07f282f0446d239}{place\_actor\_at}}(\mbox{\hyperlink{structgame__t}{game\_t}}*\ \mbox{\hyperlink{game_8c_a27113921347a82199b52e4f2ee16985c}{game}},\ \mbox{\hyperlink{structactor__t}{actor\_t}}*\ npc,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game_8h_a9e19ec0afbb3670364c08bf8b8505167}{place\_npcs\_bsp}}(\mbox{\hyperlink{structgame__t}{game\_t}}*\ \mbox{\hyperlink{game_8c_a27113921347a82199b52e4f2ee16985c}{game}},\ \mbox{\hyperlink{structbsp__node}{bsp\_node}}*\ root);}
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game_8h_ac3ad495677d8140d70b66d4b0f8bb9f5}{place\_npcs\_open\_map}}(\mbox{\hyperlink{structgame__t}{game\_t}}*\ \mbox{\hyperlink{game_8c_a27113921347a82199b52e4f2ee16985c}{game}},\ \textcolor{keywordtype}{int}\ count);}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GAME\_H}}
+
+\end{DoxyCode}

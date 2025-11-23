@@ -1,0 +1,41 @@
+\doxysection{sched.\+h}
+\hypertarget{sched_8h_source}{}\label{sched_8h_source}\index{include/sched.h@{include/sched.h}}
+\mbox{\hyperlink{sched_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SCHED\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SCHED\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{actor_8h}{actor.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsched__node}{sched\_node}}\{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsched__node}{sched\_node}}*\ \mbox{\hyperlink{structsched__node_afba4666361ba96745fe200d8fbbdb568}{next}};}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsched__node}{sched\_node}}*\ \mbox{\hyperlink{structsched__node_af56fd52513c78974498b4c3ef88fbe43}{prev}};}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{structactor__t}{actor\_t}}*\ \mbox{\hyperlink{structsched__node_abb435efce3248b8a984a8f23f137dfe6}{entity}};}
+\DoxyCodeLine{00011\ \}\mbox{\hyperlink{structsched__node}{sched\_node}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \mbox{\hyperlink{structsched__node}{sched\_node}}\ *\mbox{\hyperlink{sched_8h_a93c80d4f764696132685d892db9f1417}{sched\_init}}(\mbox{\hyperlink{structactor__t}{actor\_t}}*\ actor);}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \mbox{\hyperlink{structsched__node}{sched\_node}}*\ \mbox{\hyperlink{sched_8h_a7526912d76dc7c0455825881daabf678}{sched\_add}}(\mbox{\hyperlink{structsched__node}{sched\_node}}*\ node,\ \mbox{\hyperlink{structactor__t}{actor\_t}}*\ \mbox{\hyperlink{structsched__node_abb435efce3248b8a984a8f23f137dfe6}{entity}});}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \mbox{\hyperlink{structsched__node}{sched\_node}}*\ \mbox{\hyperlink{sched_8h_a22bfcf98e49c9dd7fbfa3d5c5eb6a40f}{sched\_remove}}(\mbox{\hyperlink{structsched__node}{sched\_node}}*\ node,\ \mbox{\hyperlink{structactor__t}{actor\_t}}*\ \mbox{\hyperlink{structsched__node_abb435efce3248b8a984a8f23f137dfe6}{entity}});}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \mbox{\hyperlink{structactor__t}{actor\_t}}*\ \mbox{\hyperlink{sched_8h_ac4202191de62ac7b95e30dcf447bca75}{sched\_current}}(\mbox{\hyperlink{structsched__node}{sched\_node}}*\ node);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \mbox{\hyperlink{structactor__t}{actor\_t}}*\ \mbox{\hyperlink{sched_8h_afc9784f6a020d68baa528ab7ad40c01c}{sched\_peek}}(\mbox{\hyperlink{structsched__node}{sched\_node}}*\ node,\ \textcolor{keywordtype}{int}\ num);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sched_8h_a88cb97315f6387edfa358092fd178ae7}{sched\_advance}}(\mbox{\hyperlink{structsched__node}{sched\_node}}*\ node);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \mbox{\hyperlink{structactor__t}{actor\_t}}*\ \mbox{\hyperlink{sched_8h_a7dc6428114980e2581fe76d3e7094c15}{sched\_get\_by\_id}}(\mbox{\hyperlink{structsched__node}{sched\_node}}*\ root,\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \mbox{\hyperlink{structsched__node}{sched\_node}}*\ \mbox{\hyperlink{sched_8h_a709beb9d131540bea6cbd4a5252e7bca}{sched\_cycle\_actions}}(\mbox{\hyperlink{structsched__node}{sched\_node}}\ *node);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \mbox{\hyperlink{structactor__t}{actor\_t}}*\ \mbox{\hyperlink{sched_8h_a29c8e14e590ca73b33e89c4e1203c49c}{sched\_get\_player}}(\mbox{\hyperlink{structsched__node}{sched\_node}}*\ root);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \mbox{\hyperlink{structactor__t}{actor\_t}}*\ \mbox{\hyperlink{sched_8h_a8d5829a158b2b3e245b3f26256789062}{sched\_get\_actor\_by\_coords}}(\mbox{\hyperlink{structsched__node}{sched\_node}}*\ root,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \mbox{\hyperlink{structsched__node}{sched\_node}}*\ \mbox{\hyperlink{sched_8h_a51d5e259610a75e072e846922c7df63b}{sched\_remove\_dead}}(\mbox{\hyperlink{structsched__node}{sched\_node}}*\ root);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

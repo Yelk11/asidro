@@ -1,0 +1,110 @@
+\doxysection{include/game.h File Reference}
+\hypertarget{game_8h}{}\label{game_8h}\index{include/game.h@{include/game.h}}
+{\ttfamily \#include "{}map.\+h"{}}\newline
+{\ttfamily \#include "{}actor.\+h"{}}\newline
+{\ttfamily \#include "{}sched.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structgame__t}{game\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct bsp\+\_\+node \mbox{\hyperlink{game_8h_a35d1125b68ea78627a47bac7d6008068}{bsp\+\_\+node}}
+\item 
+typedef struct game\+\_\+t \mbox{\hyperlink{game_8h_a4b4ce1f3b7db5fed333b7457623ece8c}{game\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{game_8h_a7e453e7ad9e79adfce0dabaa25699285}{initialize\+Game}} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{game_8h_a27113921347a82199b52e4f2ee16985c}{game}})
+\item 
+void \mbox{\hyperlink{game_8h_aa26cbd2cf166d106811420ee8d85d892}{update\+Game}} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{game_8h_a27113921347a82199b52e4f2ee16985c}{game}})
+\begin{DoxyCompactList}\small\item\em Updates the game state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_adfe74c444bc71ee9dac3831f0a825ab0}{free\+Game}} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{game_8h_a27113921347a82199b52e4f2ee16985c}{game}})
+\item 
+void \mbox{\hyperlink{game_8h_a27113921347a82199b52e4f2ee16985c}{game}} (void)
+\item 
+bool \mbox{\hyperlink{game_8h_a1b489d5887a657a425e96d51c298819a}{valid\+\_\+spawn\+\_\+tile}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map, int x, int y)
+\item 
+bool \mbox{\hyperlink{game_8h_a21095b227ce0b1eaf07f282f0446d239}{place\+\_\+actor\+\_\+at}} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{game_8h_a27113921347a82199b52e4f2ee16985c}{game}}, \mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}npc, int x, int y)
+\item 
+void \mbox{\hyperlink{game_8h_a9e19ec0afbb3670364c08bf8b8505167}{place\+\_\+npcs\+\_\+bsp}} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{game_8h_a27113921347a82199b52e4f2ee16985c}{game}}, \mbox{\hyperlink{structbsp__node}{bsp\+\_\+node}} \texorpdfstring{$\ast$}{*}root)
+\item 
+void \mbox{\hyperlink{game_8h_ac3ad495677d8140d70b66d4b0f8bb9f5}{place\+\_\+npcs\+\_\+open\+\_\+map}} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{game_8h_a27113921347a82199b52e4f2ee16985c}{game}}, int count)
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{game_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{game_8h_a35d1125b68ea78627a47bac7d6008068}\index{game.h@{game.h}!bsp\_node@{bsp\_node}}
+\index{bsp\_node@{bsp\_node}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{bsp\_node}{bsp\_node}}
+{\footnotesize\ttfamily \label{game_8h_a35d1125b68ea78627a47bac7d6008068} 
+typedef struct bsp\+\_\+node bsp\+\_\+node}
+
+\Hypertarget{game_8h_a4b4ce1f3b7db5fed333b7457623ece8c}\index{game.h@{game.h}!game\_t@{game\_t}}
+\index{game\_t@{game\_t}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_t}{game\_t}}
+{\footnotesize\ttfamily \label{game_8h_a4b4ce1f3b7db5fed333b7457623ece8c} 
+typedef struct game\+\_\+t game\+\_\+t}
+
+
+
+\label{doc-func-members}
+\Hypertarget{game_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{game_8h_adfe74c444bc71ee9dac3831f0a825ab0}\index{game.h@{game.h}!freeGame@{freeGame}}
+\index{freeGame@{freeGame}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{freeGame()}{freeGame()}}
+{\footnotesize\ttfamily \label{game_8h_adfe74c444bc71ee9dac3831f0a825ab0} 
+void free\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+\Hypertarget{game_8h_a27113921347a82199b52e4f2ee16985c}\index{game.h@{game.h}!game@{game}}
+\index{game@{game}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game()}{game()}}
+{\footnotesize\ttfamily \label{game_8h_a27113921347a82199b52e4f2ee16985c} 
+void game (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{game_8h_a7e453e7ad9e79adfce0dabaa25699285}\index{game.h@{game.h}!initializeGame@{initializeGame}}
+\index{initializeGame@{initializeGame}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{initializeGame()}{initializeGame()}}
+{\footnotesize\ttfamily \label{game_8h_a7e453e7ad9e79adfce0dabaa25699285} 
+void initialize\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+\Hypertarget{game_8h_a21095b227ce0b1eaf07f282f0446d239}\index{game.h@{game.h}!place\_actor\_at@{place\_actor\_at}}
+\index{place\_actor\_at@{place\_actor\_at}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{place\_actor\_at()}{place\_actor\_at()}}
+{\footnotesize\ttfamily \label{game_8h_a21095b227ce0b1eaf07f282f0446d239} 
+bool place\+\_\+actor\+\_\+at (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game}{, }\item[{\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{npc}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+
+\Hypertarget{game_8h_a9e19ec0afbb3670364c08bf8b8505167}\index{game.h@{game.h}!place\_npcs\_bsp@{place\_npcs\_bsp}}
+\index{place\_npcs\_bsp@{place\_npcs\_bsp}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{place\_npcs\_bsp()}{place\_npcs\_bsp()}}
+{\footnotesize\ttfamily \label{game_8h_a9e19ec0afbb3670364c08bf8b8505167} 
+void place\+\_\+npcs\+\_\+bsp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game}{, }\item[{\mbox{\hyperlink{structbsp__node}{bsp\+\_\+node}} \texorpdfstring{$\ast$}{*}}]{root}{}\end{DoxyParamCaption})}
+
+\Hypertarget{game_8h_ac3ad495677d8140d70b66d4b0f8bb9f5}\index{game.h@{game.h}!place\_npcs\_open\_map@{place\_npcs\_open\_map}}
+\index{place\_npcs\_open\_map@{place\_npcs\_open\_map}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{place\_npcs\_open\_map()}{place\_npcs\_open\_map()}}
+{\footnotesize\ttfamily \label{game_8h_ac3ad495677d8140d70b66d4b0f8bb9f5} 
+void place\+\_\+npcs\+\_\+open\+\_\+map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game}{, }\item[{int}]{count}{}\end{DoxyParamCaption})}
+
+\Hypertarget{game_8h_aa26cbd2cf166d106811420ee8d85d892}\index{game.h@{game.h}!updateGame@{updateGame}}
+\index{updateGame@{updateGame}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{updateGame()}{updateGame()}}
+{\footnotesize\ttfamily \label{game_8h_aa26cbd2cf166d106811420ee8d85d892} 
+void update\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Updates the game state. 
+
+\Hypertarget{game_8h_a1b489d5887a657a425e96d51c298819a}\index{game.h@{game.h}!valid\_spawn\_tile@{valid\_spawn\_tile}}
+\index{valid\_spawn\_tile@{valid\_spawn\_tile}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{valid\_spawn\_tile()}{valid\_spawn\_tile()}}
+{\footnotesize\ttfamily \label{game_8h_a1b489d5887a657a425e96d51c298819a} 
+bool valid\+\_\+spawn\+\_\+tile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+

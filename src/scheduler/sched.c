@@ -1,3 +1,13 @@
+/**
+ * @file sched.c
+ * @brief Scheduler implementation for turn-based actor management
+ * @author Asidro Team
+ * 
+ * Implements a circular doubly-linked ring structure for managing
+ * actor turns using an energy-based system. Handles actor insertion,
+ * removal, and turn cycling.
+ */
+
 #include <stdlib.h>
 #include "sched.h"
 #include "actor.h"

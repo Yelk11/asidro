@@ -9,11 +9,11 @@
 #include "overworld.h"
 #include "underworld.h"
 
-/* Minimal map implementation used by the game runtime. Previously there were
- * multiple map implementations during experimentation; provide a simple
- * implementation that delegates to the overworld generator by default.
- */
 
+/**
+ * @brief initialises the map
+ * @param seed the seed to generate the map from
+ */
 map_t *map_init(int seed)
 {
     map_t *map = calloc(1, sizeof(map_t));
@@ -22,6 +22,10 @@ map_t *map_init(int seed)
     return map;
 }
 
+/**
+ * @brief generate the map
+ * @param map the map to be generated
+ */
 void map_gen(map_t* map)
 {
     if(map->level == 0)
@@ -34,6 +38,9 @@ void map_gen(map_t* map)
     }
 }
 
+/**
+ * @brief 
+ */
 void map_ascend(map_t* map)
 {
     /* overworld starts at 0, dungeon 1-infinity */

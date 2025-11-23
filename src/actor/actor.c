@@ -1,3 +1,12 @@
+/**
+ * @file actor.c
+ * @brief Actor system implementation
+ * @author Asidro Team
+ * 
+ * Implements actor creation, behavior callbacks, and combat mechanics.
+ * Manages all game entities including player, NPCs, and monsters.
+ */
+
 #include <ncurses.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -8,14 +17,32 @@
 #include "ai.h"
 #include "screen.h"
 
+/**
+ * @brief Get ASCII character for actor type
+ * @private
+ * 
+ * @param type Actor type to get character for
+ * @return Character representing the actor type
+ */
 static int sign(int v) { return (v > 0) - (v < 0); }
 
+/**
+ * @brief Generate unique actor ID
+ * @private
+ * 
+ * Uses a static counter to generate sequential unique IDs.
+ * 
+ * @return Next unique ID
+ */
 unsigned int next_id(void) {
     static unsigned int counter = 0;
     return counter++;   // returns current value, then increments
 }
 
-
+/**
+ * @brief get the ascii symbol for an actor type
+ * @param type type of actor
+ */
 char actor_get_ascii(actor_type type)
 {
     switch(type)
@@ -27,6 +54,15 @@ char actor_get_ascii(actor_type type)
     }
 }
 
+/**
+ * @brief initiate an actor
+ * @param type type of actor to be made
+ * @param x the x coordinate of the actor
+ * @param y the y coordinate of the actor
+ * @param speed the speed of the actor
+ * @param act_fn the action function pointer
+ * @param data any data that is worth passing, often game state
+ */
 actor_t* make_actor(actor_type type, int x, int y, int speed, void (*act_fn)(actor_t*), void* data)
 {
     actor_t* a = malloc(sizeof(actor_t));
@@ -65,6 +101,11 @@ actor_t* make_actor(actor_type type, int x, int y, int speed, void (*act_fn)(act
     return a;
 }
 
+
+/**
+ * @brief player action function
+ * @param self the actor
+ */
 void player_act(actor_t* self)
 {
     game_t* game = (game_t*)self->data;
@@ -91,7 +132,10 @@ void player_act(actor_t* self)
     }
 }
 
-
+/**
+ * @brief monster action function
+ * @param self the actor
+ */
 void monster_act(actor_t* self) {
     if (!self) return;
     game_t* game = (game_t*)self->data;
@@ -166,6 +210,10 @@ void monster_act(actor_t* self) {
     wander_randomly(self);
 }
 
+/**
+ * @brief npc action function
+ * @param self the actor
+ */
 void npc_act(actor_t* self)
 {
 

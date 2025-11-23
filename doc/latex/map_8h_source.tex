@@ -1,0 +1,42 @@
+\doxysection{map.\+h}
+\hypertarget{map_8h_source}{}\label{map_8h_source}\index{include/map.h@{include/map.h}}
+\mbox{\hyperlink{map_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MAP\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MAP\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{underworld_8h}{underworld.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ MAP\_HEIGHT\ 80}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ MAP\_WIDTH\ 80}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ WALL\ '\#'}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ FLOOR\ '.'}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ TREE\ 'T'}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ SOIL\ '\string~'}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ ROCK\ 'o'}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmap__t}{map\_t}}\{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structmap__t_a5a1e7e64d97ee0b6efd4b047ec086722}{map}}[\mbox{\hyperlink{map_8h_a529d5ebb449edf31d9835d13f4fb9f89}{MAP\_HEIGHT}}][\mbox{\hyperlink{map_8h_aa037a6d6a4f04d51c7ec1c9ee9054e76}{MAP\_WIDTH}}];}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmap__t_a3a86757717778eed2457bfd9146b1027}{level}};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmap__t_a13a269c53b9563530787ad9cbae00efa}{seed}};}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{structbsp__node}{bsp\_node}}*\ \mbox{\hyperlink{structmap__t_aaca02995d7bdd4343ac167f034849022}{root}};}
+\DoxyCodeLine{00022\ \}\ \mbox{\hyperlink{structmap__t}{map\_t}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \mbox{\hyperlink{structmap__t}{map\_t}}*\ \mbox{\hyperlink{map_8h_a36c4d28ddb2fd62d5d81d03d06eaead0}{map\_init}}(\textcolor{keywordtype}{int}\ seed);}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{map_8h_aa43978fc2bfe395e84a3787d8e3cd44c}{map\_gen}}(\mbox{\hyperlink{structmap__t}{map\_t}}*\ map);}
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{map_8h_a93e0aa99793d35ae3247e14decc0a3b6}{freeMap}}(\mbox{\hyperlink{structmap__t}{map\_t}}*\ map);}
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{map_8h_a1a1a802dc14ed614830ef8ee747ac8b3}{in\_bounds}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{map_8h_a935cf875bf46586a39eebaab0d1b1eb3}{set\_tile}}(\mbox{\hyperlink{structmap__t}{map\_t}}*\ map,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{map_8h_a0ad4191b4ed9e84261a57d4f670dc2e9}{get\_tile}}(\mbox{\hyperlink{structmap__t}{map\_t}}*\ map,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{map_8h_a19d43a7ccc471793718fabbedd183152}{fill\_map}}(\mbox{\hyperlink{structmap__t}{map\_t}}\ *map,\ \textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{map_8h_a4499aa5f3421e737c465052d8fe5f7f4}{map\_ascend}}(\mbox{\hyperlink{structmap__t}{map\_t}}*\ map);}
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{map_8h_a0322dfe3b9e1b1cbed314752ab9a1ea9}{map\_descend}}(\mbox{\hyperlink{structmap__t}{map\_t}}*\ map);}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{map_8h_a74504c6995c8e1f35247cf8af368f2c2}{map\_get\_player\_spawn}}(\mbox{\hyperlink{structmap__t}{map\_t}}*\ map,\ \textcolor{keywordtype}{int}*\ x,\ \textcolor{keywordtype}{int}*\ y);}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{map_8h_a522727bfb4e97debb966a75ae53642ea}{map\_is\_walkable}}(\mbox{\hyperlink{structmap__t}{map\_t}}*\ map,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{map_8h_a4a7d53b70aff96d42353556ec58be251}{map\_get\_npc\_spawn}}(\mbox{\hyperlink{structmap__t}{map\_t}}*\ map,\ \textcolor{keywordtype}{int}\ *x,\ \textcolor{keywordtype}{int}*\ y,\ \textcolor{keywordtype}{int}\ px,\ \textcolor{keywordtype}{int}\ py);}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

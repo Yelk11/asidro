@@ -1,3 +1,12 @@
+/**
+ * @file game.c
+ * @brief Core game logic and main game loop
+ * @author Asidro Team
+ * 
+ * Implements the main game loop, state management, and game lifecycle.
+ * Orchestrates interaction between map, actors, scheduler, and UI systems.
+ */
+
 #include <ncurses.h>
 #include <stdlib.h>
 
@@ -9,6 +18,26 @@
 #include "sched.h"
 #include "item.h"
 
+/**
+ * @brief Initialize a game level
+ * 
+ * Generates the map, spawns the player, NPCs, and monsters.
+ * Called at the start of each new level.
+ * 
+ * @param game Game state to initialize
+ * 
+ * @private
+ * @see game_spawn_player, game_spawn_npc, game_spawn_monsters
+ */
+ 
+
+
+
+
+/**
+ * @brief Initializes a game level
+ * @param game the Game state
+ */
 void game_init_level(game_t* game)
 {
     map_gen(game->map);
@@ -25,7 +54,11 @@ void initializeGame(game_t* game)
     game->ch = '0';
     game_init_level(game);
 }
-
+/**
+ * @brief Updates the game state
+ * @param game game state
+ * 
+ */
 void updateGame(game_t* game)
 {
     curs_set(0);
@@ -68,7 +101,6 @@ void updateGame(game_t* game)
             } while (cur != game->action_list);
         }
         
-        /* Remove dead actors */
         game->action_list = sched_remove_dead(game->action_list);
         
         update_screen(game);
@@ -76,13 +108,19 @@ void updateGame(game_t* game)
     
 }
 
-
+/**
+ * @brief frees the game state memory
+ * @param game game state
+ */
 void freeGame(game_t* game)
 {
     freeMap(game->map);
 }
 
-
+/**
+ * @brief initialises the game state
+ * 
+ */
 void game(void)
 {
     game_t* game = calloc(1, sizeof(game_t));

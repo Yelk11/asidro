@@ -1,0 +1,47 @@
+\doxysection{src/map/overworld.c File Reference}
+\hypertarget{overworld_8c}{}\label{overworld_8c}\index{src/map/overworld.c@{src/map/overworld.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}overworld.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{overworld_8c_a2aaefab22678e7af1031ed0bdb1e1af8}{generate\+\_\+overworld}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map)
+\item 
+bool \mbox{\hyperlink{overworld_8c_a4386afd8b9aa86658d3e308aa5325cc4}{over\+\_\+is\+\_\+walkable}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map, int x, int y)
+\item 
+void \mbox{\hyperlink{overworld_8c_abe3582cb131f4ed5684a67545b75fe96}{over\+\_\+get\+\_\+player\+\_\+spawn}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map, int \texorpdfstring{$\ast$}{*}x, int \texorpdfstring{$\ast$}{*}y)
+\item 
+void \mbox{\hyperlink{overworld_8c_a15c00ee1ce95e7e0f13efaf0eb0d2040}{over\+\_\+get\+\_\+npc\+\_\+spawn}} (\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}map, int \texorpdfstring{$\ast$}{*}x, int \texorpdfstring{$\ast$}{*}y, int px, int py)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{overworld_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{overworld_8c_a2aaefab22678e7af1031ed0bdb1e1af8}\index{overworld.c@{overworld.c}!generate\_overworld@{generate\_overworld}}
+\index{generate\_overworld@{generate\_overworld}!overworld.c@{overworld.c}}
+\doxysubsubsection{\texorpdfstring{generate\_overworld()}{generate\_overworld()}}
+{\footnotesize\ttfamily \label{overworld_8c_a2aaefab22678e7af1031ed0bdb1e1af8} 
+void generate\+\_\+overworld (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{}\end{DoxyParamCaption})}
+
+\Hypertarget{overworld_8c_a15c00ee1ce95e7e0f13efaf0eb0d2040}\index{overworld.c@{overworld.c}!over\_get\_npc\_spawn@{over\_get\_npc\_spawn}}
+\index{over\_get\_npc\_spawn@{over\_get\_npc\_spawn}!overworld.c@{overworld.c}}
+\doxysubsubsection{\texorpdfstring{over\_get\_npc\_spawn()}{over\_get\_npc\_spawn()}}
+{\footnotesize\ttfamily \label{overworld_8c_a15c00ee1ce95e7e0f13efaf0eb0d2040} 
+void over\+\_\+get\+\_\+npc\+\_\+spawn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{y}{, }\item[{int}]{px}{, }\item[{int}]{py}{}\end{DoxyParamCaption})}
+
+\Hypertarget{overworld_8c_abe3582cb131f4ed5684a67545b75fe96}\index{overworld.c@{overworld.c}!over\_get\_player\_spawn@{over\_get\_player\_spawn}}
+\index{over\_get\_player\_spawn@{over\_get\_player\_spawn}!overworld.c@{overworld.c}}
+\doxysubsubsection{\texorpdfstring{over\_get\_player\_spawn()}{over\_get\_player\_spawn()}}
+{\footnotesize\ttfamily \label{overworld_8c_abe3582cb131f4ed5684a67545b75fe96} 
+void over\+\_\+get\+\_\+player\+\_\+spawn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{y}{}\end{DoxyParamCaption})}
+
+\Hypertarget{overworld_8c_a4386afd8b9aa86658d3e308aa5325cc4}\index{overworld.c@{overworld.c}!over\_is\_walkable@{over\_is\_walkable}}
+\index{over\_is\_walkable@{over\_is\_walkable}!overworld.c@{overworld.c}}
+\doxysubsubsection{\texorpdfstring{over\_is\_walkable()}{over\_is\_walkable()}}
+{\footnotesize\ttfamily \label{overworld_8c_a4386afd8b9aa86658d3e308aa5325cc4} 
+bool over\+\_\+is\+\_\+walkable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmap__t}{map\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{map}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+

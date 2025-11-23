@@ -1,0 +1,90 @@
+\doxysection{src/actor/actor.c File Reference}
+\hypertarget{actor_8c}{}\label{actor_8c}\index{src/actor/actor.c@{src/actor/actor.c}}
+{\ttfamily \#include $<$ncurses.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}actor.\+h"{}}\newline
+{\ttfamily \#include "{}game.\+h"{}}\newline
+{\ttfamily \#include "{}map.\+h"{}}\newline
+{\ttfamily \#include "{}ai.\+h"{}}\newline
+{\ttfamily \#include "{}screen.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{actor_8c_a8f83a533b2b19f005d98e2658db48f95}{next\+\_\+id}} (void)
+\item 
+char \mbox{\hyperlink{actor_8c_a726715cf2112436d3bd20011b7606203}{actor\+\_\+get\+\_\+ascii}} (\mbox{\hyperlink{actor_8h_a9e34d2d122b3d24e659eb59d9b42937b}{actor\+\_\+type}} type)
+\item 
+\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{actor_8c_adfea1c378729f0b6f518a03e05c31766}{make\+\_\+actor}} (\mbox{\hyperlink{actor_8h_a9e34d2d122b3d24e659eb59d9b42937b}{actor\+\_\+type}} type, int x, int y, int speed, void(\texorpdfstring{$\ast$}{*}act\+\_\+fn)(\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}data)
+\item 
+void \mbox{\hyperlink{actor_8c_aeabe77c6f08639b674067dc5dcbf4916}{player\+\_\+act}} (\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}self)
+\item 
+void \mbox{\hyperlink{actor_8c_a7dfb1884c37cfd92eac11dcdf0e3c86c}{monster\+\_\+act}} (\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}self)
+\item 
+void \mbox{\hyperlink{actor_8c_a2034ca94bb8a9459eeb9298087fec075}{npc\+\_\+act}} (\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}self)
+\item 
+bool \mbox{\hyperlink{actor_8c_a6f49003fb8e4670da4479001f385ac50}{actor\+\_\+attack}} (\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}attacker, \mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}defender)
+\item 
+void \mbox{\hyperlink{actor_8c_a0c2b218f1c17af0a497144caa0a99ce5}{actor\+\_\+take\+\_\+damage}} (\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}actor, int damage)
+\item 
+bool \mbox{\hyperlink{actor_8c_a840278d9ae0eb8a969e69b567534c8e9}{actor\+\_\+is\+\_\+dead}} (\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}actor)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{actor_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{actor_8c_a6f49003fb8e4670da4479001f385ac50}\index{actor.c@{actor.c}!actor\_attack@{actor\_attack}}
+\index{actor\_attack@{actor\_attack}!actor.c@{actor.c}}
+\doxysubsubsection{\texorpdfstring{actor\_attack()}{actor\_attack()}}
+{\footnotesize\ttfamily \label{actor_8c_a6f49003fb8e4670da4479001f385ac50} 
+bool actor\+\_\+attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{attacker}{, }\item[{\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{defender}{}\end{DoxyParamCaption})}
+
+\Hypertarget{actor_8c_a726715cf2112436d3bd20011b7606203}\index{actor.c@{actor.c}!actor\_get\_ascii@{actor\_get\_ascii}}
+\index{actor\_get\_ascii@{actor\_get\_ascii}!actor.c@{actor.c}}
+\doxysubsubsection{\texorpdfstring{actor\_get\_ascii()}{actor\_get\_ascii()}}
+{\footnotesize\ttfamily \label{actor_8c_a726715cf2112436d3bd20011b7606203} 
+char actor\+\_\+get\+\_\+ascii (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{actor_8h_a9e34d2d122b3d24e659eb59d9b42937b}{actor\+\_\+type}}}]{type}{}\end{DoxyParamCaption})}
+
+\Hypertarget{actor_8c_a840278d9ae0eb8a969e69b567534c8e9}\index{actor.c@{actor.c}!actor\_is\_dead@{actor\_is\_dead}}
+\index{actor\_is\_dead@{actor\_is\_dead}!actor.c@{actor.c}}
+\doxysubsubsection{\texorpdfstring{actor\_is\_dead()}{actor\_is\_dead()}}
+{\footnotesize\ttfamily \label{actor_8c_a840278d9ae0eb8a969e69b567534c8e9} 
+bool actor\+\_\+is\+\_\+dead (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{actor}{}\end{DoxyParamCaption})}
+
+\Hypertarget{actor_8c_a0c2b218f1c17af0a497144caa0a99ce5}\index{actor.c@{actor.c}!actor\_take\_damage@{actor\_take\_damage}}
+\index{actor\_take\_damage@{actor\_take\_damage}!actor.c@{actor.c}}
+\doxysubsubsection{\texorpdfstring{actor\_take\_damage()}{actor\_take\_damage()}}
+{\footnotesize\ttfamily \label{actor_8c_a0c2b218f1c17af0a497144caa0a99ce5} 
+void actor\+\_\+take\+\_\+damage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{actor}{, }\item[{int}]{damage}{}\end{DoxyParamCaption})}
+
+\Hypertarget{actor_8c_adfea1c378729f0b6f518a03e05c31766}\index{actor.c@{actor.c}!make\_actor@{make\_actor}}
+\index{make\_actor@{make\_actor}!actor.c@{actor.c}}
+\doxysubsubsection{\texorpdfstring{make\_actor()}{make\_actor()}}
+{\footnotesize\ttfamily \label{actor_8c_adfea1c378729f0b6f518a03e05c31766} 
+\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*} make\+\_\+actor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{actor_8h_a9e34d2d122b3d24e659eb59d9b42937b}{actor\+\_\+type}}}]{type}{, }\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{int}]{speed}{, }\item[{void(\texorpdfstring{$\ast$}{*}}]{act\+\_\+fn~}{)(\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{actor_8c_a7dfb1884c37cfd92eac11dcdf0e3c86c}\index{actor.c@{actor.c}!monster\_act@{monster\_act}}
+\index{monster\_act@{monster\_act}!actor.c@{actor.c}}
+\doxysubsubsection{\texorpdfstring{monster\_act()}{monster\_act()}}
+{\footnotesize\ttfamily \label{actor_8c_a7dfb1884c37cfd92eac11dcdf0e3c86c} 
+void monster\+\_\+act (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+\Hypertarget{actor_8c_a8f83a533b2b19f005d98e2658db48f95}\index{actor.c@{actor.c}!next\_id@{next\_id}}
+\index{next\_id@{next\_id}!actor.c@{actor.c}}
+\doxysubsubsection{\texorpdfstring{next\_id()}{next\_id()}}
+{\footnotesize\ttfamily \label{actor_8c_a8f83a533b2b19f005d98e2658db48f95} 
+unsigned int next\+\_\+id (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{actor_8c_a2034ca94bb8a9459eeb9298087fec075}\index{actor.c@{actor.c}!npc\_act@{npc\_act}}
+\index{npc\_act@{npc\_act}!actor.c@{actor.c}}
+\doxysubsubsection{\texorpdfstring{npc\_act()}{npc\_act()}}
+{\footnotesize\ttfamily \label{actor_8c_a2034ca94bb8a9459eeb9298087fec075} 
+void npc\+\_\+act (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+\Hypertarget{actor_8c_aeabe77c6f08639b674067dc5dcbf4916}\index{actor.c@{actor.c}!player\_act@{player\_act}}
+\index{player\_act@{player\_act}!actor.c@{actor.c}}
+\doxysubsubsection{\texorpdfstring{player\_act()}{player\_act()}}
+{\footnotesize\ttfamily \label{actor_8c_aeabe77c6f08639b674067dc5dcbf4916} 
+void player\+\_\+act (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structactor__t}{actor\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+

@@ -1,0 +1,75 @@
+\doxysection{src/util/game.c File Reference}
+\hypertarget{game_8c}{}\label{game_8c}\index{src/util/game.c@{src/util/game.c}}
+{\ttfamily \#include $<$ncurses.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}game.\+h"{}}\newline
+{\ttfamily \#include "{}game\+\_\+cfg.\+h"{}}\newline
+{\ttfamily \#include "{}map.\+h"{}}\newline
+{\ttfamily \#include "{}actor.\+h"{}}\newline
+{\ttfamily \#include "{}screen.\+h"{}}\newline
+{\ttfamily \#include "{}sched.\+h"{}}\newline
+{\ttfamily \#include "{}item.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{game_8c_a431a51cca26ca646b66431c52bd86d8a}{game\+\_\+init\+\_\+level}} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{game_8c_a27113921347a82199b52e4f2ee16985c}{game}})
+\begin{DoxyCompactList}\small\item\em Game handles the state of the game as well as orchestrates all subcomponents. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8c_a7e453e7ad9e79adfce0dabaa25699285}{initialize\+Game}} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{game_8c_a27113921347a82199b52e4f2ee16985c}{game}})
+\item 
+void \mbox{\hyperlink{game_8c_aa26cbd2cf166d106811420ee8d85d892}{update\+Game}} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{game_8c_a27113921347a82199b52e4f2ee16985c}{game}})
+\begin{DoxyCompactList}\small\item\em Updates the game state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8c_adfe74c444bc71ee9dac3831f0a825ab0}{free\+Game}} (\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{game_8c_a27113921347a82199b52e4f2ee16985c}{game}})
+\item 
+void \mbox{\hyperlink{game_8c_a27113921347a82199b52e4f2ee16985c}{game}} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{game_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{game_8c_adfe74c444bc71ee9dac3831f0a825ab0}\index{game.c@{game.c}!freeGame@{freeGame}}
+\index{freeGame@{freeGame}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{freeGame()}{freeGame()}}
+{\footnotesize\ttfamily \label{game_8c_adfe74c444bc71ee9dac3831f0a825ab0} 
+void free\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+\Hypertarget{game_8c_a27113921347a82199b52e4f2ee16985c}\index{game.c@{game.c}!game@{game}}
+\index{game@{game}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{game()}{game()}}
+{\footnotesize\ttfamily \label{game_8c_a27113921347a82199b52e4f2ee16985c} 
+void game (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{game_8c_a431a51cca26ca646b66431c52bd86d8a}\index{game.c@{game.c}!game\_init\_level@{game\_init\_level}}
+\index{game\_init\_level@{game\_init\_level}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{game\_init\_level()}{game\_init\_level()}}
+{\footnotesize\ttfamily \label{game_8c_a431a51cca26ca646b66431c52bd86d8a} 
+void game\+\_\+init\+\_\+level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Game handles the state of the game as well as orchestrates all subcomponents. 
+
+\begin{DoxyAuthor}{Author}
+Yelk11
+\end{DoxyAuthor}
+Initializes a game level 
+\begin{DoxyParams}{Parameters}
+{\em game} & the Game state \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game_8c_a7e453e7ad9e79adfce0dabaa25699285}\index{game.c@{game.c}!initializeGame@{initializeGame}}
+\index{initializeGame@{initializeGame}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{initializeGame()}{initializeGame()}}
+{\footnotesize\ttfamily \label{game_8c_a7e453e7ad9e79adfce0dabaa25699285} 
+void initialize\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+\Hypertarget{game_8c_aa26cbd2cf166d106811420ee8d85d892}\index{game.c@{game.c}!updateGame@{updateGame}}
+\index{updateGame@{updateGame}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{updateGame()}{updateGame()}}
+{\footnotesize\ttfamily \label{game_8c_aa26cbd2cf166d106811420ee8d85d892} 
+void update\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgame__t}{game\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Updates the game state. 
+
