@@ -3,3 +3,9 @@
 main
 debug_actor_list.txt
 debug_map.txt
+
+# Doxygen output directories
+doc/
+rtf/
+xml/
+man/
