@@ -1,250 +1,205 @@
 /**
  * @file actor.c
- * @brief Actor system implementation
+ * @brief Actor behavior implementation on top of ECS
  * @author Asidro Team
- * 
- * Implements actor creation, behavior callbacks, and combat mechanics.
- * Manages all game entities including player, NPCs, and monsters.
  */
 
-#include <ncurses.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
 #include "actor.h"
-#include "game.h"
+#include "ecs.h"
 #include "map.h"
+#include "sched.h"
 #include "ai.h"
-#include "screen.h"
 
-/**
- * @brief Get ASCII character for actor type
- * @private
- * 
- * @param type Actor type to get character for
- * @return Character representing the actor type
- */
 static int sign(int v) { return (v > 0) - (v < 0); }
 
-/**
- * @brief Generate unique actor ID
- * @private
- * 
- * Uses a static counter to generate sequential unique IDs.
- * 
- * @return Next unique ID
- */
-unsigned int next_id(void) {
-    static unsigned int counter = 0;
-    return counter++;   // returns current value, then increments
-}
-
-/**
- * @brief get the ascii symbol for an actor type
- * @param type type of actor
- */
 char actor_get_ascii(actor_type type)
 {
     switch(type)
     {
-        case PLAYER: return '@'; break;
-        case NPC: return 'G'; break;
-        case MONSTER: return 'M'; break;
-        default: return '?'; break;
+        case PLAYER: return '@';
+        case NPC: return 'G';
+        case MONSTER: return 'M';
+        default: return '?';
     }
 }
 
-/**
- * @brief initiate an actor
- * @param type type of actor to be made
- * @param x the x coordinate of the actor
- * @param y the y coordinate of the actor
- * @param speed the speed of the actor
- * @param act_fn the action function pointer
- * @param data any data that is worth passing, often game state
- */
-actor_t* make_actor(actor_type type, int x, int y, int speed, void (*act_fn)(actor_t*), void* data)
+Entity make_actor(actor_type type, int x, int y, int speed)
 {
-    actor_t* a = malloc(sizeof(actor_t));
-    a->ascii_char = actor_get_ascii(type);
-    a->x = x;
-    a->y = y;
-    a->speed = speed;      // 100 = normal, >100 = faster, <100 = slower
-    a->energy = 50;        // start with partial energy (adjusted for balance)
-    a->act = act_fn;       // behavior callback
-    a->isAlive = true;
-    a->type = type;
+    Entity entity = ecs_create_entity();
+    if (entity == ECS_INVALID_ENTITY) {
+        return ECS_INVALID_ENTITY;
+    }
 
-    /* Initialize health and damage based on type */
+    ecs_set_actor_type(entity, type);
+    ecs_set_position(entity, x, y);
+    ecs_set_renderable(entity, actor_get_ascii(type));
+    ecs_set_energy(entity, 50, speed);
+
     switch (type) {
         case PLAYER:
-            a->max_health = 20;
-            a->damage = 3;
+            ecs_set_health(entity, 20, 20);
+            ecs_set_combat(entity, 3);
+            ecs_add_component(entity, COMP_PLAYER_INPUT);
             break;
         case NPC:
-            a->max_health = 5;
-            a->damage = 1;
+            ecs_set_health(entity, 5, 5);
+            ecs_set_combat(entity, 1);
+            ecs_add_component(entity, COMP_AI);
             break;
         case MONSTER:
-            a->max_health = 8;
-            a->damage = 2;
+            ecs_set_health(entity, 8, 8);
+            ecs_set_combat(entity, 2);
+            ecs_add_component(entity, COMP_AI);
             break;
         default:
-            a->max_health = 5;
-            a->damage = 1;
+            ecs_set_health(entity, 5, 5);
+            ecs_set_combat(entity, 1);
+            ecs_add_component(entity, COMP_AI);
             break;
     }
-    a->health = a->max_health;
 
-    a->id = next_id();        // or use a monotonic counter
-    a->data = data;
-    return a;
+    return entity;
 }
 
-
-/**
- * @brief player action function
- * @param self the actor
- */
-void player_act(actor_t* self)
+void player_act(Entity self, game_t* game)
 {
-    game_t* game = (game_t*)self->data;
+    if (!ecs_is_valid(self) || !game) return;
+
+    Position* pos = ecs_get_position(self);
+    if (!pos) return;
+
     int dx = 0;
     int dy = 0;
-	switch (game->ch) {
-		case 'w': case 'k': dy -= 1; break;
-		case 's': case 'j': dy += 1; break;
-		case 'a': case 'h': dx -= 1; break;
-		case 'd': case 'l': dx += 1; break;
-		default: break;
-	}
-
-    int new_x = self->x + dx;
-    int new_y = self->y + dy;
-
-    /* Check if there's an enemy at the destination */
-    actor_t* target = sched_get_actor_by_coords(game->action_list, new_x, new_y);
-    if (target && target != self && target->isAlive) {
-        actor_attack(self, target);
-    } else if (map_is_walkable(game->map, new_x, new_y)) {
-        self->x = new_x;
-        self->y = new_y;
+    switch (game->ch) {
+        case 'w': case 'k': dy -= 1; break;
+        case 's': case 'j': dy += 1; break;
+        case 'a': case 'h': dx -= 1; break;
+        case 'd': case 'l': dx += 1; break;
+        default: break;
     }
-}
 
-/**
- * @brief monster action function
- * @param self the actor
- */
-void monster_act(actor_t* self) {
-    if (!self) return;
-    game_t* game = (game_t*)self->data;
-    if (!game) {
-        wander_randomly(self);
+    int new_x = pos->x + dx;
+    int new_y = pos->y + dy;
+    Entity target = sched_get_actor_by_coords(game->action_list, new_x, new_y);
+
+    if (target != ECS_INVALID_ENTITY && target != self && !actor_is_dead(target)) {
+        actor_attack(self, target);
         return;
     }
 
-    actor_t* player = sched_get_player(game->action_list);
-    if (!player) {
-        wander_randomly(self);
+    if (map_is_walkable(game->map, new_x, new_y)) {
+        pos->x = new_x;
+        pos->y = new_y;
+    }
+}
+
+void monster_act(Entity self, game_t* game) {
+    if (!ecs_is_valid(self) || !game) return;
+    Position* pos = ecs_get_position(self);
+    if (!pos) return;
+
+    Entity player = sched_get_player(game->action_list);
+    if (player == ECS_INVALID_ENTITY || actor_is_dead(player)) {
+        wander_randomly(self, game);
         return;
     }
 
     int dist = distance_to_player(player, self);
     if (dist <= 1) {
-        /* adjacent: attack the player */
         actor_attack(self, player);
         return;
     }
 
     if (dist < 10 && dist > 1) {
-        /* Step toward player one tile at a time, prefer straight moves */
-        int dx = sign(player->x - self->x);
-        int dy = sign(player->y - self->y);
+        Position* player_pos = ecs_get_position(player);
+        if (!player_pos) {
+            wander_randomly(self, game);
+            return;
+        }
 
-        int try_x = self->x + dx;
-        int try_y = self->y;
+        int dx = sign(player_pos->x - pos->x);
+        int dy = sign(player_pos->y - pos->y);
+
+        int try_x = pos->x + dx;
+        int try_y = pos->y;
         if (dx != 0 && map_is_walkable(game->map, try_x, try_y)) {
-            actor_t* occ = sched_get_actor_by_coords(game->action_list, try_x, try_y);
-            if (!occ || !occ->isAlive) {
-                self->x = try_x;
-                self->y = try_y;
+            Entity occ = sched_get_actor_by_coords(game->action_list, try_x, try_y);
+            if (occ == ECS_INVALID_ENTITY || actor_is_dead(occ)) {
+                pos->x = try_x;
+                pos->y = try_y;
                 return;
             }
-            /* if occupant is player, attack */
             if (occ == player) { actor_attack(self, occ); return; }
         }
 
-        /* try vertical move */
-        try_x = self->x;
-        try_y = self->y + dy;
+        try_x = pos->x;
+        try_y = pos->y + dy;
         if (dy != 0 && map_is_walkable(game->map, try_x, try_y)) {
-            actor_t* occ = sched_get_actor_by_coords(game->action_list, try_x, try_y);
-            if (!occ || !occ->isAlive) {
-                self->x = try_x;
-                self->y = try_y;
+            Entity occ = sched_get_actor_by_coords(game->action_list, try_x, try_y);
+            if (occ == ECS_INVALID_ENTITY || actor_is_dead(occ)) {
+                pos->x = try_x;
+                pos->y = try_y;
                 return;
             }
             if (occ == player) { actor_attack(self, occ); return; }
         }
 
-        /* try diagonal if both dx and dy non-zero */
-        try_x = self->x + dx;
-        try_y = self->y + dy;
-        if ((dx != 0 && dy != 0) && map_is_walkable(game->map, try_x, try_y)) {
-            actor_t* occ = sched_get_actor_by_coords(game->action_list, try_x, try_y);
-            if (!occ || !occ->isAlive) {
-                self->x = try_x;
-                self->y = try_y;
+        try_x = pos->x + dx;
+        try_y = pos->y + dy;
+        if (dx != 0 && dy != 0 && map_is_walkable(game->map, try_x, try_y)) {
+            Entity occ = sched_get_actor_by_coords(game->action_list, try_x, try_y);
+            if (occ == ECS_INVALID_ENTITY || actor_is_dead(occ)) {
+                pos->x = try_x;
+                pos->y = try_y;
                 return;
             }
             if (occ == player) { actor_attack(self, occ); return; }
         }
 
-        /* fallback to wandering */
-        wander_randomly(self);
+        wander_randomly(self, game);
         return;
     }
 
-    /* too far: wander */
-    wander_randomly(self);
+    wander_randomly(self, game);
 }
 
-/**
- * @brief npc action function
- * @param self the actor
- */
-void npc_act(actor_t* self)
+void npc_act(Entity self, game_t* game)
 {
-
+    if (!ecs_is_valid(self) || !game) return;
+    wander_randomly(self, game);
 }
 
-
-
-
-bool actor_attack(actor_t* attacker, actor_t* defender)
+bool actor_attack(Entity attacker, Entity defender)
 {
-    if (!attacker || !defender || !defender->isAlive)
+    if (!ecs_is_valid(attacker) || !ecs_is_valid(defender) || actor_is_dead(defender))
         return false;
 
-    /* Simple attack: always hits, deals damage */
-    actor_take_damage(defender, attacker->damage);
+    Combat* attacker_combat = ecs_get_combat(attacker);
+    if (!attacker_combat) return false;
+
+    actor_take_damage(defender, attacker_combat->damage);
     return true;
 }
 
-void actor_take_damage(actor_t* actor, int damage)
+void actor_take_damage(Entity e, int damage)
 {
-    if (!actor || damage < 0)
-        return;
+    if (!ecs_is_valid(e) || damage < 0) return;
 
-    actor->health -= damage;
-    if (actor->health <= 0) {
-        actor->health = 0;
-        actor->isAlive = false;
+    Health* health = ecs_get_health(e);
+    if (!health) return;
+
+    health->hp -= damage;
+    if (health->hp <= 0) {
+        health->hp = 0;
+        health->alive = false;
     }
 }
 
-bool actor_is_dead(actor_t* actor)
+bool actor_is_dead(Entity e)
 {
-    return !actor || !actor->isAlive;
+    Health* health = ecs_get_health(e);
+    return !health || !health->alive;
 }

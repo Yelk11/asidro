@@ -1,16 +1,5 @@
-/**
- * @file game.h
- * @brief Core game state and management
- * @author Asidro Team
- * 
- * Defines the main game state structure and provides functions for
- * game initialization, updates, and cleanup.
- */
 
-/*
- * This file defines the game_t structure and function prototypes
- * for game management.
- */
+
 #ifndef GAME_H
 #define GAME_H
 
@@ -20,13 +9,7 @@
 
 typedef struct bsp_node bsp_node;
 
-/**
- * @struct game_t
- * @brief Main game state container
- * 
- * Holds all global game state including the current map,
- * actor scheduler, and input information.
- */
+
 typedef struct game_t {
 	map_t *map;                 /**< Current map/level */
     sched_node* action_list;    /**< Scheduler ring of all actors */
@@ -34,16 +17,6 @@ typedef struct game_t {
     bsp_node* root;             /**< BSP tree root (for dungeon generation) */
 } game_t;
 
-
-/**
- * @brief Initialize a new game level
- * 
- * Generates map terrain and spawns player, NPCs, and monsters.
- * 
- * @param game Game state to initialize
- * 
- * @see game_spawn_player, game_spawn_npc, game_spawn_monsters
- */
 void initializeGame(game_t* game);
 
 /**
@@ -112,7 +85,7 @@ bool valid_spawn_tile(map_t* map, int x, int y);
  * 
  * @see valid_spawn_tile
  */
-bool place_actor_at(game_t* game, actor_t* npc, int x, int y);
+bool place_actor_at(game_t* game, Entity npc, int x, int y);
 
 /**
  * @brief Place NPCs using BSP tree for better distribution

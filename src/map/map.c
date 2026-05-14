@@ -22,10 +22,6 @@ map_t *map_init(int seed)
     return map;
 }
 
-/**
- * @brief generate the map
- * @param map the map to be generated
- */
 void map_gen(map_t* map)
 {
     if(map->level == 0)
@@ -38,10 +34,6 @@ void map_gen(map_t* map)
     }
 }
 
-/**
- * @brief ascend to the heigher level (0 is top)
- * @param map map
- */
 void map_ascend(map_t* map)
 {
     /* overworld starts at 0, dungeon 1-infinity */
@@ -52,9 +44,6 @@ void map_ascend(map_t* map)
     map_gen(map);
 }
 
-/**
- * @brief change the map level down one (lower is higher)
- */
 void map_descend(map_t* map)
 {
     if(map->level >= 1)
@@ -64,34 +53,16 @@ void map_descend(map_t* map)
     map_gen(map);
 }
 
-
-/**
- * @brief free the map
- * @param map the map to be freed
- */
 void freeMap(map_t *map)
 {
     free(map);
 }
 
-
-/**
- * @brief check id coordinates is in bounds
- * @param x the x coord
- * @param y the y coord
- */
 int in_bounds(int x, int y)
 {
     return x >= 0 && y >= 0 && x < MAP_WIDTH && y < MAP_HEIGHT;
 }
 
-/**
- * @brief set a tile to a charector
- * @param map the map
- * @param x the x coordinate
- * @param y the y corrdinate
- * @param c the charector that will be used
- */
 void set_tile(map_t *map, int x, int y, char c)
 {
     if (!map)
@@ -100,12 +71,6 @@ void set_tile(map_t *map, int x, int y, char c)
         map->map[y][x] = c;
 }
 
-/**
- * @brief get the ascii value given coordinate on a map
- * @param map the map
- * @param x the x coordinate
- * @param y the y coordinate
- */
 char get_tile(map_t *map, int x, int y)
 {
     if (!map)
@@ -113,11 +78,6 @@ char get_tile(map_t *map, int x, int y)
     return in_bounds(x, y) ? map->map[y][x] : WALL;
 }
 
-/**
- * @brief fill the map with the given char
- * @param map the map
- * @param c the charector to fill the map with
- */
 void fill_map(map_t *map, char c)
 {
     if (!map)

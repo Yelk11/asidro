@@ -10,36 +10,10 @@
 #ifndef AI_H
 #define AI_H
 
-#include "actor.h"
+#include "ecs.h"
+#include "game.h"
 
-/**
- * @brief Calculate Manhattan distance to player
- * 
- * Computes the Manhattan distance (taxicab distance) between an actor
- * and the player. Distance = |dx| + |dy|.
- * 
- * @param player Player actor to measure distance to
- * @param actor Actor to measure distance from
- * 
- * @return Manhattan distance between actors, or INT_MAX if player is NULL
- * 
- * @note Used for deciding monster behavior (chase, attack, wander)
- * @see monster_act
- */
-int distance_to_player(actor_t* player, actor_t* actor);
-
-/**
- * @brief Move actor to a random adjacent walkable tile
- * 
- * Selects a random adjacent tile that is walkable and not occupied
- * by other actors. Tries up to 10 times before giving up.
- * 
- * @param actor Actor to move
- * 
- * @note Modifies actor->x and actor->y in place
- * @note Does nothing if no valid adjacent tiles exist
- * @see map_is_walkable, sched_get_actor_by_coords
- */
-void wander_randomly(actor_t* actor);
+int distance_to_player(Entity player, Entity actor);
+void wander_randomly(Entity actor, game_t* game);
 
 #endif
